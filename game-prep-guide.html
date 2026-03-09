@@ -804,28 +804,108 @@ Close supplier: up to 25-40k/month reserve &rarr; deployed when you see actual d
   <h3>&#128640; The Optimal Strategy in 6 Steps</h3>
   <ol>
     <li>
-      <strong>Design Room:</strong> Only add features where (demand increase &times; new margin) &gt; (old demand &times; old margin). Avoid options that increase standard deviation significantly. Keep it simple in Year 1 while you learn the game.
+      <strong>Step 1: Design Room &mdash; Evaluate Feature Profitability</strong>
+      <p>For each design option, calculate whether it increases or decreases your <strong>total monthly profit</strong>. The key test is:</p>
+      <div class="formula">
+        Profit Impact = [(Base Demand + &Delta;Demand) &times; (Base Margin + &Delta;Margin)] &minus; [Base Demand &times; Base Margin]
+      </div>
+      <p>Do this for <strong>both models separately</strong>, then sum:</p>
+      <div class="formula">
+        Total Impact = Impact<sub>A</sub> + Impact<sub>B</sub>
+      </div>
+      <p>An option is worth adding only if Total Impact &gt; 0. Be careful: an option that boosts demand by +5k but cuts margin by $20 may actually <em>reduce</em> total profit. Also check combinations &mdash; sometimes two features together are profitable even if one alone isn't, because demand effects stack.</p>
+      <p>Watch the <strong>standard deviation</strong>: options that increase &sigma; make demand harder to predict, which amplifies mismatch costs. In Year 1, keep it simple while you learn the game dynamics.</p>
     </li>
     <li>
-      <strong>Forecasting Room:</strong> Use the consensus as your baseline. Note the standard deviations. Calculate the critical ratio for each model to determine whether to forecast above or below the mean.
-    </li>
-    <li>
-      <strong>Production Room &mdash; Dual Sourcing:</strong>
+      <strong>Step 2: Forecasting Room &mdash; Set Optimal Production Targets</strong>
+      <p>Use the <strong>Newsvendor model</strong> to calculate exactly how much to produce. Start by computing the <strong>Critical Ratio</strong> for each model:</p>
+      <div class="formula">
+        C<sub>u</sub> = Selling Price &minus; Unit Cost &nbsp;&nbsp;(cost of ordering one too few)<br>
+        C<sub>o</sub> = Unit Cost &minus; Markdown Price &nbsp;&nbsp;(cost of ordering one too many)<br>
+        Critical Ratio = C<sub>u</sub> / (C<sub>u</sub> + C<sub>o</sub>)
+      </div>
+      <p>The Critical Ratio tells you the <strong>optimal service level</strong> &mdash; the probability that you don't stock out. Then find the corresponding <strong>z-value</strong> from the normal distribution (use the Newsvendor tool or a z-table), and compute:</p>
+      <div class="formula">
+        Q* = &mu; + z &times; &sigma;
+      </div>
+      <p>This gives you the <strong>optimal monthly production quantity</strong>. The key insight:</p>
       <ul>
-        <li>Commit a conservative base quantity to <strong>FarFarAway or FarAway</strong> (cheap, but locked in early)</li>
-        <li>Reserve <strong>PrettyClose or VeryClose</strong> capacity for reactive adjustments during the season</li>
-        <li>For <strong>Model A:</strong> Commit ~50-55k/month to far supplier; use close supplier to ramp up if demand is strong</li>
-        <li>For <strong>Model B:</strong> Commit only ~22-25k/month to far supplier (below the mean!); use close supplier cautiously</li>
+        <li><strong>Model A:</strong> C<sub>u</sub>=$70, C<sub>o</sub>=$16 &rarr; CR=0.81 &rarr; z=+0.88 &rarr; Q*=60+0.88&times;12 = <strong>70.6k</strong> (order <em>above</em> the mean, because unsold units only lose $16 each)</li>
+        <li><strong>Model B:</strong> C<sub>u</sub>=$90, C<sub>o</sub>=$126 &rarr; CR=0.42 &rarr; z=&minus;0.20 &rarr; Q*=30&minus;0.20&times;15 = <strong>27k</strong> (order <em>below</em> the mean, because unsold units lose $126 each!)</li>
       </ul>
+      <p>Also compute <strong>expected profit</strong> to sanity-check your plan:</p>
+      <div class="formula">
+        Expected Sales = &mu; &minus; &sigma; &times; L(z) &nbsp;&nbsp;(where L(z) is the loss function)<br>
+        Expected Leftover = Q* &minus; Expected Sales<br>
+        Expected Profit/mo = C<sub>u</sub> &times; E[Sales] &minus; C<sub>o</sub> &times; E[Leftover]
+      </div>
     </li>
     <li>
-      <strong>During the Season:</strong> Watch actual demand month by month. If demand &gt; forecast, activate close supplier capacity. If demand &lt; forecast, reduce or stop close supplier orders.
+      <strong>Step 3: Production Room &mdash; Dual Sourcing Split</strong>
+      <p>This is the most impactful decision. Split your optimal Q* between <strong>far suppliers</strong> (cheap, long lead time) and <strong>close suppliers</strong> (expensive, zero lead time). The idea is the <strong>Quick Response</strong> strategy from Class 5 (Zara model):</p>
+      <div class="formula">
+        Far Supplier Quantity = &mu; &minus; k&sigma; &nbsp;&nbsp;(a conservative "safe" base you're almost certain to sell)<br>
+        Close Supplier Reserve = Q* &minus; Far Supplier Quantity &nbsp;&nbsp;(deployed only when you see actual demand)
+      </div>
+      <p>A good starting heuristic is to commit <strong>&mu; &minus; 1&sigma;</strong> to the far supplier (covers ~84% of demand scenarios), and use close suppliers for the rest:</p>
+      <ul>
+        <li><strong>Model A:</strong> Far supplier: ~48&ndash;55k/month (60&minus;12=48 to 60&minus;5=55). Close supplier reserve: up to 25k to top up if demand is strong.</li>
+        <li><strong>Model B:</strong> Far supplier: ~15&ndash;22k/month only (30&minus;15=15 to the newsvendor Q* of 27). Be very conservative &mdash; overproduction is devastating. Close supplier: small reserve, deployed cautiously.</li>
+      </ul>
+      <p>To evaluate which supplier combination minimizes cost, calculate <strong>Total Monthly Cost</strong> for each combo:</p>
+      <div class="formula">
+        Total Cost = &Sigma;(Units<sub>i</sub> &times; UnitCost<sub>i</sub>) + &Sigma;(SetupCost<sub>i</sub>) + &Sigma;(HoldingCost &times; Units<sub>i</sub> &times; LeadTime<sub>i</sub> / 2)
+      </div>
+      <p>The holding cost term accounts for inventory sitting during the lead time &mdash; far suppliers with 4&ndash;6 month lead times accumulate significant holding costs, while close suppliers with 0 lead time have none.</p>
     </li>
     <li>
-      <strong>Board Room:</strong> Write clear strategy statements. Reference dual sourcing, critical ratios, and demand uncertainty. Show you understand the tradeoffs. Adapt based on their feedback.
+      <strong>Step 4: During the Season &mdash; Bayesian Updating</strong>
+      <p>As months unfold (May through December), you see actual demand. Use this data to <strong>update your forecast in real time</strong> and decide whether to activate close-supplier capacity.</p>
+      <p>Compute the <strong>running A/F ratio</strong> (Actual-to-Forecast ratio) after each observed month:</p>
+      <div class="formula">
+        A/F Ratio = Average Actual Demand (observed months) / Original Forecast
+      </div>
+      <p>Since demand is spread evenly across the season, early months are highly predictive of the full season:</p>
+      <ul>
+        <li><strong>A/F &gt; 1.1:</strong> Demand is running above forecast. Activate close supplier capacity now to capture the upside. Order close-supplier units equal to the running average.</li>
+        <li><strong>A/F between 0.9&ndash;1.1:</strong> On track. Maintain current plan.</li>
+        <li><strong>A/F &lt; 0.9:</strong> Demand is below forecast. Do <em>not</em> activate additional close-supplier capacity. You may already be overproducing from the far supplier commitment.</li>
+      </ul>
+      <p>The <strong>Regret Minimization</strong> test helps you decide how aggressively to react:</p>
+      <div class="formula">
+        Stockout regret = Remaining months &times; (A/F &times; Forecast &minus; Committed Supply) &times; C<sub>u</sub><br>
+        Overstock regret = Excess units &times; C<sub>o</sub>
+      </div>
+      <p>For Model A (low C<sub>o</sub>), lean toward ordering more if in doubt. For Model B (high C<sub>o</sub>), lean toward restraint.</p>
     </li>
     <li>
-      <strong>Year Over Year:</strong> Track your A/F ratios. Adjust forecasts. Learn which features actually boosted demand. Refine supplier allocations. Show the board you're improving.
+      <strong>Step 5: Board Room &mdash; Strategy Statements</strong>
+      <p>Board members vote on your <strong>reasoning quality</strong>, not just results. Write statements that demonstrate you understand the tradeoffs. Reference specific frameworks:</p>
+      <ul>
+        <li><strong>Design choices:</strong> &ldquo;We selected options X and Y because their combined profit impact is +$Zk/month. We avoided option W because it increases &sigma; by K units, raising mismatch cost.&rdquo;</li>
+        <li><strong>Forecasting:</strong> &ldquo;Model A&rsquo;s critical ratio of 0.81 indicates we should produce above the mean. Model B&rsquo;s ratio of 0.42 means we produce below the mean to limit markdown exposure.&rdquo;</li>
+        <li><strong>Sourcing:</strong> &ldquo;We commit base demand to FarFarAway at $160/unit and reserve PrettyClose capacity for reactive adjustments &mdash; a dual sourcing / Quick Response strategy that balances cost and flexibility.&rdquo;</li>
+        <li><strong>Adaptation:</strong> Reference what you learned from the prior year. &ldquo;Last year&rsquo;s A/F ratio of 1.12 suggests we under-forecasted. We&rsquo;ve adjusted this year&rsquo;s forecast up by 10%.&rdquo;</li>
+      </ul>
+      <p>Listen carefully to each board member&rsquo;s feedback &mdash; they tell you exactly what area to improve (design, forecasting, sourcing, or financial performance).</p>
+    </li>
+    <li>
+      <strong>Step 6: Year Over Year &mdash; Learn and Improve</strong>
+      <p>After each year, compute metrics that reveal systematic errors in your strategy:</p>
+      <div class="formula">
+        A/F Ratio = Total Actual Demand / Total Forecast Demand &nbsp;&nbsp;(per year and cumulative)<br>
+        Utilization = Units Sold / Units Produced &nbsp;&nbsp;(how much of your production actually sold)<br>
+        Forecast Bias = Cumulative A/F &minus; 1 &nbsp;&nbsp;(positive = under-forecast, negative = over-forecast)
+      </div>
+      <ul>
+        <li><strong>Forecast bias correction:</strong> If your cumulative A/F is 1.10 (you under-forecast by 10%), multiply next year&rsquo;s forecast by 1.10 to debias.</li>
+        <li><strong>Utilization below 90%:</strong> You&rsquo;re overproducing &mdash; reduce far-supplier commitments or shift more to close suppliers.</li>
+        <li><strong>YoY demand trend:</strong> Calculate the percentage change in actual demand between years. If demand is growing 5% per year, factor that into next year&rsquo;s baseline.</li>
+      </ul>
+      <div class="formula">
+        Suggested Forecast = Last Year&rsquo;s Actual &times; (1 + YoY Trend) &times; A/F Correction
+      </div>
+      <p>The board watches for <strong>improvement over time</strong>. Repeating mistakes loses votes. Show that you analyze data, adjust, and get better each round. Avoid the <strong>Bullwhip Effect</strong> &mdash; don&rsquo;t overreact to one year of high or low demand. Adjust gradually.</p>
     </li>
   </ol>
 </div>
