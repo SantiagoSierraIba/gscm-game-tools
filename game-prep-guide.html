@@ -1238,19 +1238,36 @@ Close supplier: up to 25-40k/month reserve &rarr; deployed when you see actual d
   <div class="tool-card">
     <h3>&#128200; Mid-Season Demand Tracker</h3>
     <p style="color:var(--text-dim);font-size:0.88rem;margin-bottom:1rem;">
-      Enter actual demand as the season progresses. The tracker computes a running A/F ratio and recommends close-supplier orders.
+      Enter actual demand as the season progresses. The tracker computes a running A/F ratio and tells you exactly what to order from close suppliers.
     </p>
 
-    <div class="tool-input-row" style="margin-bottom:1rem;">
+    <div class="tool-input-row" style="margin-bottom:0.5rem;">
       <div class="tool-input-group">
-        <label class="tool-label">Original Forecast A (k/mo)</label>
+        <label class="tool-label">Your Demand Forecast A (k/mo)</label>
         <input class="tool-input" type="number" id="t4-fcstA" value="60" step="1">
       </div>
       <div class="tool-input-group">
-        <label class="tool-label">Original Forecast B (k/mo)</label>
+        <label class="tool-label">Your Demand Forecast B (k/mo)</label>
         <input class="tool-input" type="number" id="t4-fcstB" value="30" step="1">
       </div>
     </div>
+    <p style="color:var(--text-dim);font-size:0.78rem;margin:0 0 1rem 0;">
+      This is your <strong>&mu;</strong> from the Newsvendor &mdash; what you predicted demand would be (entered in the Forecasting Room).
+    </p>
+
+    <div class="tool-input-row" style="margin-bottom:0.5rem;">
+      <div class="tool-input-group">
+        <label class="tool-label">Far Supplier Committed A (k/mo)</label>
+        <input class="tool-input" type="number" id="t4-farCommitA" value="0" step="1">
+      </div>
+      <div class="tool-input-group">
+        <label class="tool-label">Far Supplier Committed B (k/mo)</label>
+        <input class="tool-input" type="number" id="t4-farCommitB" value="0" step="1">
+      </div>
+    </div>
+    <p style="color:var(--text-dim);font-size:0.78rem;margin:0 0 1rem 0;">
+      How much you already committed to far suppliers (e.g. FarFarAway) &mdash; these orders are locked in and arriving each month.
+    </p>
 
     <h4>Monthly Actuals (k units &mdash; leave blank if not yet observed)</h4>
     <div class="month-grid">
