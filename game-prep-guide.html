@@ -1015,6 +1015,29 @@ Close supplier: up to 25-40k/month reserve &rarr; deployed when you see actual d
       </div>
     </div>
 
+    <details style="margin:0.8rem 0;">
+      <summary style="cursor:pointer;font-weight:600;color:var(--accent);font-size:0.92rem;">&#9881; Uncertainty Parameters (Newsvendor Mode)</summary>
+      <p style="color:var(--text-dim);font-size:0.82rem;margin:0.4rem 0 0.6rem;">Fill all 4 fields to enable Newsvendor expected-profit analysis. Leave blank for deterministic-only mode.</p>
+      <div class="tool-input-row" style="margin-bottom:0.6rem;">
+        <div class="tool-input-group">
+          <label class="tool-label">Base &sigma; A (k/mo)</label>
+          <input class="tool-input" type="number" id="t1-baseSigA" placeholder="e.g. 4" step="0.1">
+        </div>
+        <div class="tool-input-group">
+          <label class="tool-label">Base &sigma; B (k/mo)</label>
+          <input class="tool-input" type="number" id="t1-baseSigB" placeholder="e.g. 2" step="0.1">
+        </div>
+        <div class="tool-input-group">
+          <label class="tool-label">Overage Cost A Co ($/unit)</label>
+          <input class="tool-input" type="number" id="t1-coA" placeholder="e.g. 16" step="1">
+        </div>
+        <div class="tool-input-group">
+          <label class="tool-label">Overage Cost B Co ($/unit)</label>
+          <input class="tool-input" type="number" id="t1-coB" placeholder="e.g. 18" step="1">
+        </div>
+      </div>
+    </details>
+
     <hr class="tool-divider">
     <h4>Design Options</h4>
 
@@ -1040,6 +1063,14 @@ Close supplier: up to 25-40k/month reserve &rarr; deployed when you see actual d
           <label class="tool-label">&Delta; Profit B ($)</label>
           <input class="tool-input" type="number" id="t1-opt0-pB" value="0" step="1">
         </div>
+        <div class="tool-input-group">
+          <label class="tool-label">New &sigma; A (k)</label>
+          <input class="tool-input" type="number" id="t1-opt0-sigA" placeholder="blank=no chg" step="0.1">
+        </div>
+        <div class="tool-input-group">
+          <label class="tool-label">New &sigma; B (k)</label>
+          <input class="tool-input" type="number" id="t1-opt0-sigB" placeholder="blank=no chg" step="0.1">
+        </div>
       </div>
       <div class="tool-input-row" style="margin-bottom:0.6rem;" data-opt="1">
         <div class="tool-input-group" style="flex:1.5">
@@ -1061,6 +1092,14 @@ Close supplier: up to 25-40k/month reserve &rarr; deployed when you see actual d
         <div class="tool-input-group">
           <label class="tool-label">&Delta; Profit B ($)</label>
           <input class="tool-input" type="number" id="t1-opt1-pB" value="0" step="1">
+        </div>
+        <div class="tool-input-group">
+          <label class="tool-label">New &sigma; A (k)</label>
+          <input class="tool-input" type="number" id="t1-opt1-sigA" placeholder="blank=no chg" step="0.1">
+        </div>
+        <div class="tool-input-group">
+          <label class="tool-label">New &sigma; B (k)</label>
+          <input class="tool-input" type="number" id="t1-opt1-sigB" placeholder="blank=no chg" step="0.1">
         </div>
       </div>
       <div class="tool-input-row" style="margin-bottom:0.6rem;" data-opt="2">
@@ -1084,6 +1123,14 @@ Close supplier: up to 25-40k/month reserve &rarr; deployed when you see actual d
           <label class="tool-label">&Delta; Profit B ($)</label>
           <input class="tool-input" type="number" id="t1-opt2-pB" value="0" step="1">
         </div>
+        <div class="tool-input-group">
+          <label class="tool-label">New &sigma; A (k)</label>
+          <input class="tool-input" type="number" id="t1-opt2-sigA" placeholder="blank=no chg" step="0.1">
+        </div>
+        <div class="tool-input-group">
+          <label class="tool-label">New &sigma; B (k)</label>
+          <input class="tool-input" type="number" id="t1-opt2-sigB" placeholder="blank=no chg" step="0.1">
+        </div>
       </div>
       <div class="tool-input-row" style="margin-bottom:0.6rem;" data-opt="3">
         <div class="tool-input-group" style="flex:1.5">
@@ -1105,6 +1152,14 @@ Close supplier: up to 25-40k/month reserve &rarr; deployed when you see actual d
         <div class="tool-input-group">
           <label class="tool-label">&Delta; Profit B ($)</label>
           <input class="tool-input" type="number" id="t1-opt3-pB" value="0" step="1">
+        </div>
+        <div class="tool-input-group">
+          <label class="tool-label">New &sigma; A (k)</label>
+          <input class="tool-input" type="number" id="t1-opt3-sigA" placeholder="blank=no chg" step="0.1">
+        </div>
+        <div class="tool-input-group">
+          <label class="tool-label">New &sigma; B (k)</label>
+          <input class="tool-input" type="number" id="t1-opt3-sigB" placeholder="blank=no chg" step="0.1">
         </div>
       </div>
     </div>
