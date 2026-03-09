@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GSCM Game Prep Guide &amp; Course Summary</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/tools.css">
+</head>
+<body>
+
+<!-- Mobile toggle button -->
+<button class="toc-toggle" id="tocToggle" aria-label="Toggle navigation">&#9776;</button>
+
+<!-- Overlay for mobile -->
+<div class="toc-overlay" id="tocOverlay"></div>
+
+<!-- Sidebar TOC -->
+<nav class="toc" id="toc">
+  <h2>&#128218; Navigation</h2>
+  <div class="toc-grid">
+    <div class="toc-section-label">Part 1 &mdash; Course Summary</div>
+    <a href="#class1" data-target="class1">&#128309; Class 1: Intro &amp; Process View</a>
+    <a href="#class2" data-target="class2">&#128994; Class 2: Process Analysis</a>
+    <a href="#class3" data-target="class3">&#128992; Class 3: Variability &amp; Queues</a>
+    <a href="#class4" data-target="class4">&#128993; Class 4: Workshop I</a>
+    <a href="#class5" data-target="class5">&#128995; Class 5: Inventory &amp; Newsvendor</a>
+    <a href="#class6" data-target="class6">&#128308; Class 6: SC Coordination</a>
+    <a href="#class7" data-target="class7">&#11093; Class 7: GSCM Game</a>
+
+    <div class="toc-section-label">Part 2 &mdash; Game Prep</div>
+    <a href="#game-overview" data-target="game-overview">&#127918; Game Overview</a>
+    <a href="#game-rooms" data-target="game-rooms">&#128682; The Four Rooms</a>
+    <a href="#game-decisions" data-target="game-decisions">&#127919; Key Decisions</a>
+    <a href="#game-kpis" data-target="game-kpis">&#128200; KPIs &amp; Metrics</a>
+    <a href="#game-mistakes" data-target="game-mistakes">&#9888;&#65039; Mistakes to Avoid</a>
+    <a href="#game-frameworks" data-target="game-frameworks">&#128218; Course Frameworks</a>
+
+    <div class="toc-section-label">Part 3 &mdash; Demand Strategy</div>
+    <a href="#demand-drivers" data-target="demand-drivers">&#128161; What Drives Demand</a>
+    <a href="#demand-signals" data-target="demand-signals">&#128225; Signals to Watch</a>
+    <a href="#demand-heuristics" data-target="demand-heuristics">&#129518; Forecasting Heuristics</a>
+    <a href="#demand-theory" data-target="demand-theory">&#128210; Theory Connections</a>
+
+    <div class="toc-section-label">Part 4 &mdash; Live Game Tools</div>
+    <a href="#tool-design" data-target="tool-design">&#128295; Design Room Calculator</a>
+    <a href="#tool-newsvendor" data-target="tool-newsvendor">&#128202; Newsvendor Optimizer</a>
+    <a href="#tool-supplier" data-target="tool-supplier">&#127981; Supplier Mix Advisor</a>
+    <a href="#tool-tracker" data-target="tool-tracker">&#128200; Mid-Season Tracker</a>
+    <a href="#tool-yoy" data-target="tool-yoy">&#128203; Year-over-Year</a>
+  </div>
+</nav>
+
+<!-- Main content area (pushed right on desktop) -->
+<div class="page-body">
+
+<!-- Hero -->
+<div class="hero" id="top">
+  <h1>Operations &amp; Global Supply Chain Management</h1>
+  <div class="subtitle">Complete Course Summary + GSCM Game Preparation Guide</div>
+  <div class="subtitle" style="font-size:0.85rem; margin-top:0.3rem; opacity:0.7;">Built with Claude Code</div>
+  <div class="badge">ESMT Berlin &middot; Prof. Nazli Sonmez &middot; 2026</div>
+</div>
+
+<div class="container">
+
+<!-- ============================================================ -->
+<!--  PART 1: COURSE SUMMARY FOR DUMMIES                          -->
+<!-- ============================================================ -->
+
+<div class="section-header sh-blue" id="part1">
+  <span class="section-num">Part 1</span>
+  <h2>&#128214; Course Summary (For Dummies)</h2>
+</div>
+
+<p style="color:var(--text-dim); margin-bottom:1rem; font-size:0.93rem;">
+  Every major topic from Classes 1&ndash;7, explained so simply that someone with zero background could understand it. No jargon. Lots of analogies.
+</p>
+
+<!-- CLASS 1 -->
+<div class="week-card wc-1" id="class1">
+  <div class="week-label">Class 1</div>
+  <h3>Introduction to Operations &amp; the Process View</h3>
+  <p><strong>The big idea:</strong> Every business is basically a machine that takes inputs (raw materials, customers, data) and transforms them into outputs (products, served customers, decisions). Operations Management is about making that machine run as smoothly and profitably as possible.</p>
+
+  <h4>Core Concept: Matching Supply with Demand</h4>
+  <p>The founding problem of operations is that <strong>supply almost never perfectly matches demand</strong>. When you make too much, you have waste (unsold clothes, empty airline seats). When you make too little, you lose sales (KFC running out of chicken, hospitals without enough PPE during COVID).</p>
+
+  <div class="analogy">&#128161; <strong>Analogy:</strong> Imagine you're hosting a dinner party but don't know exactly how many guests are coming. Cook too much food? Wasted groceries. Cook too little? Hungry guests. Operations is the art of getting that balance right.</div>
+
+  <h4>The Three Magic Numbers</h4>
+  <p>You can describe <em>any</em> process with just three metrics:</p>
+  <ul>
+    <li><strong>Flow Rate (R):</strong> How many units come out per unit of time (e.g., 10 patients/hour)</li>
+    <li><strong>Flow Time (T):</strong> How long each unit spends inside the process (e.g., 45 minutes per patient)</li>
+    <li><strong>Inventory (I):</strong> How many units are currently inside the process (e.g., 7 patients in the clinic right now)</li>
+  </ul>
+
+  <h4>Little's Law: I = R &times; T</h4>
+  <div class="formula">Inventory = Flow Rate &times; Flow Time &nbsp;&nbsp;&nbsp; (I = R &times; T)</div>
+  <p>This is the single most important formula in the course. It always works. No assumptions needed. If you know any two of the three numbers, you can find the third.</p>
+  <div class="analogy">&#128161; <strong>Analogy:</strong> Think of a bathtub. Water flows in (R), sits in the tub (I), and eventually drains out. If water comes in at 10 gallons/min and the tub holds 100 gallons, each gallon stays for 10 minutes on average. That's Little's Law.</div>
+
+  <h4>Inventory Turns &amp; Cash Conversion Cycle</h4>
+  <ul>
+    <li><strong>Inventory Turns</strong> = COGS / Inventory = how many times per year you "sell through" your inventory. Higher is better (less money tied up).</li>
+    <li><strong>Cash Conversion Cycle (C2C)</strong> = Days to sell inventory + Days to collect payment &minus; Days before you pay suppliers. <em>Apple's C2C is negative &minus;89 days</em> &mdash; they get paid by customers long before they pay suppliers. That's operational genius.</li>
+  </ul>
+
+  <h4>Benihana Case Study</h4>
+  <p>Benihana restaurants achieved incredible profitability through clever process design:</p>
+  <ul>
+    <li>Cooking in front of customers eliminated the need for a big kitchen (only 22% back-of-house vs. 30% typical)</li>
+    <li>Limited menu (steak, chicken, shrimp) reduced food waste to 30-35% of sales (vs. 38-48%)</li>
+    <li>Chef-as-entertainer meant labor cost of only 10-12% (vs. industry 30-35%!)</li>
+  </ul>
+  <div class="analogy">&#128161; <strong>Takeaway:</strong> Smart process design doesn't mean cutting quality &mdash; Benihana customers rated food "excellent" at 78%. It means redesigning <em>how</em> work flows to eliminate waste.</div>
+</div>
+
+<!-- CLASS 2 -->
+<div class="week-card wc-2" id="class2">
+  <div class="week-label">Class 2</div>
+  <h3>Process Analysis: Finding the Bottleneck</h3>
+  <p><strong>The big idea:</strong> Every process has a weakest link &mdash; the slowest step that limits everything else. Find it, fix it, and the whole process speeds up.</p>
+
+  <h4>Key Vocabulary</h4>
+  <ul>
+    <li><strong>Activity:</strong> A single step in a process (e.g., "mix dough")</li>
+    <li><strong>Resource:</strong> The person or machine doing an activity (e.g., the oven)</li>
+    <li><strong>Buffer/Queue:</strong> Where things wait between steps (e.g., patients in a waiting room)</li>
+    <li><strong>Bottleneck:</strong> The resource with the <em>lowest capacity</em> &mdash; it constrains the entire process</li>
+  </ul>
+
+  <h4>Capacity</h4>
+  <div class="formula">Capacity of a Resource = (1 / Activity Time) &times; # of Resource Units</div>
+  <p>If it takes 10 minutes to bake a batch and you have 1 oven, your capacity is 6 batches/hour. Add a second oven? 12 batches/hour.</p>
+
+  <h4>Flow Rate</h4>
+  <div class="formula">Flow Rate = min(Available Input, Demand, Process Capacity)</div>
+  <p>Your actual output is limited by whichever is smallest: how much raw material you have, how much customers want, or what your bottleneck can handle.</p>
+
+  <h4>Utilization</h4>
+  <div class="formula">Utilization = Flow Rate / Capacity &nbsp;&nbsp; (always 0% to 100%)</div>
+  <p>The bottleneck always has the highest utilization. If a machine runs at 95% utilization, it's almost maxed out.</p>
+
+  <h4>Critical Path</h4>
+  <p>When activities can happen in parallel (like making a salad while the steak cooks), the <strong>critical path</strong> is the longest chain of sequential activities. Only speeding up tasks on the critical path will speed up the overall process.</p>
+
+  <div class="analogy">&#128161; <strong>Analogy:</strong> Imagine getting ready in the morning. Showering (15 min) &rarr; getting dressed (5 min) &rarr; eating breakfast (10 min) = 30 minutes. But if your coffee machine brews while you shower (runs in parallel), it doesn't add time. The shower &rarr; dress &rarr; eat chain is your critical path.</div>
+
+  <h4>Managerial Levers</h4>
+  <ul>
+    <li><strong>To increase throughput:</strong> Speed up the bottleneck, add resources there, or shift work away from it</li>
+    <li><strong>To reduce flow time:</strong> Run activities in parallel instead of sequence, or cut activity durations on the critical path</li>
+  </ul>
+</div>
+
+<!-- CLASS 3 -->
+<div class="week-card wc-3" id="class3">
+  <div class="week-label">Class 3</div>
+  <h3>Variability &amp; Congestion: Why Queues Form</h3>
+  <p><strong>The big idea:</strong> Even when you have enough capacity on average, <strong>randomness causes waiting</strong>. The more unpredictable arrivals and service times are, the longer the queues.</p>
+
+  <h4>Why Does Waiting Happen?</h4>
+  <p>Imagine a bank teller who can serve 1 customer every 4 minutes, and customers arrive every 4 minutes on average. In a perfect world, no one waits. But in reality, sometimes 3 customers arrive in 5 minutes, then nobody for 10 minutes. That clustering creates queues.</p>
+
+  <h4>The Coefficient of Variation (CV)</h4>
+  <div class="formula">CV = Standard Deviation / Mean</div>
+  <ul>
+    <li><strong>CV = 0:</strong> Perfectly predictable (like a Swiss train schedule)</li>
+    <li><strong>CV = 1:</strong> Moderately random (like random phone calls)</li>
+    <li><strong>CV &gt; 1:</strong> Highly unpredictable (like emergency room arrivals)</li>
+  </ul>
+
+  <h4>The Waiting Time Formula</h4>
+  <div class="formula">Wait Time = (Service Time) &times; (Utilization Effect) &times; (Variability Effect)</div>
+  <div class="formula">T<sub>q</sub> = p &times; [u / (1-u)] &times; [(CV<sub>a</sub>&sup2; + CV<sub>p</sub>&sup2;) / 2]</div>
+  <p>Three things drive waiting:</p>
+  <ol>
+    <li><strong>Service time (p):</strong> Longer services = longer waits</li>
+    <li><strong>Utilization (u):</strong> As utilization approaches 100%, wait time <em>explodes</em> exponentially. This is the "hockey stick" effect.</li>
+    <li><strong>Variability:</strong> More randomness in arrivals (CV<sub>a</sub>) or service (CV<sub>p</sub>) = more waiting</li>
+  </ol>
+
+  <div class="analogy">&#128161; <strong>Analogy:</strong> Running a highway at 95% capacity doesn't mean slight traffic &mdash; it means gridlock. That's because small random variations (someone braking, a merge) cascade. Same with any process near 100% utilization.</div>
+
+  <h4>Five Levers to Reduce Waiting</h4>
+  <ol>
+    <li><strong>Add capacity</strong> (more servers/machines) to reduce utilization</li>
+    <li><strong>Reduce service time variability</strong> (standardize, train, automate)</li>
+    <li><strong>Reduce arrival variability</strong> (appointments, reservations, staggered schedules)</li>
+    <li><strong>Pool resources</strong> &mdash; one shared queue feeding multiple servers beats separate queues</li>
+    <li><strong>Manage the psychology of waiting</strong> (tell people how long, keep them occupied, explain delays)</li>
+  </ol>
+
+  <h4>The Power of Pooling</h4>
+  <p>Instead of 2 separate lines with 1 cashier each, have 1 line feeding 2 cashiers. Same total capacity, but dramatically less waiting because an idle cashier can serve anyone, not just "their" line.</p>
+
+  <h4>Product Mix Optimization</h4>
+  <div class="formula">Priority = Contribution Margin per Unit / Bottleneck Time per Unit</div>
+  <p>When capacity is limited, produce the product that generates the most profit per minute of bottleneck time first.</p>
+</div>
+
+<!-- CLASS 4 -->
+<div class="week-card wc-4" id="class4">
+  <div class="week-label">Class 4</div>
+  <h3>Workshop I: Putting It All Together</h3>
+  <p><strong>The big idea:</strong> This was a hands-on practice session applying Little's Law, process analysis, and queuing theory to real-world problems.</p>
+
+  <h4>Key Problem Types Practiced</h4>
+  <ul>
+    <li><strong>Little's Law applications:</strong> Car repair shops (estimating wait times from inventory and throughput), retail chains (how long does a product sit in inventory?), accounts receivable (processing checks faster to free up cash)</li>
+    <li><strong>Process analysis:</strong> Loan review processes with branching paths, fast food restaurants (finding the bottleneck among multiple stations), pizza-making with two workers (task allocation)</li>
+    <li><strong>Queuing problems:</strong> Phone call centers (computing idle time and wait times), auto lube shops (impact of reducing service time variability), pharmaceutical development (is adding a 4th R&amp;D center worth $216M/year?)</li>
+  </ul>
+
+  <div class="callout callout-blue">
+    <strong>Key insight from Workshop I:</strong> Splitting resources into dedicated lines (e.g., one hoist for routine repairs, one for major) can make things <em>worse</em> on average compared to a shared pool. Always consider pooling.
+  </div>
+
+  <h4>Memorable Results</h4>
+  <ul>
+    <li>A pharma company with 3 R&amp;D centers: utilization = 80%, but drugs wait <strong>33 months</strong> just to start development. Adding a 4th center drops utilization to 60% and waiting to 6 months &mdash; generating $216M/year more revenue.</li>
+    <li>At a fast food restaurant, the bottleneck was the cash register &mdash; not the sandwich assembly. Adding another assembler wouldn't help at all.</li>
+  </ul>
+</div>
+
+<!-- CLASS 5 -->
+<div class="week-card wc-5" id="class5">
+  <div class="week-label">Class 5</div>
+  <h3>Managing Inventory: The Newsvendor Model</h3>
+  <p><strong>The big idea:</strong> When you have to order inventory <em>before</em> you know how much customers will buy (and you can't reorder), how much should you order? Too much = waste; too little = missed sales. The Newsvendor model gives you the mathematically optimal answer.</p>
+
+  <h4>When Does This Apply?</h4>
+  <p>Any "order once, sell once" situation: fashion apparel, holiday merchandise, newspaper stands, seasonal products, perishable food, concert tickets.</p>
+
+  <h4>The Two Costs</h4>
+  <ul>
+    <li><strong>Overage Cost (C<sub>o</sub>):</strong> Cost of ordering one too many = Cost &minus; Salvage Value. You bought it but couldn't sell it at full price.</li>
+    <li><strong>Underage Cost (C<sub>u</sub>):</strong> Cost of ordering one too few = Selling Price &minus; Cost. A customer wanted to buy, but you had nothing to sell.</li>
+  </ul>
+
+  <div class="analogy">&#128161; <strong>Analogy:</strong> Imagine selling umbrellas before a forecast of "maybe rain." Each umbrella costs $5 and sells for $20. Leftover umbrellas can be sold for $2. Ordering too many costs $3 each (C<sub>o</sub> = 5 &minus; 2). Missing a sale costs $15 each (C<sub>u</sub> = 20 &minus; 5). Since missing a sale hurts 5&times; more than overordering, you should lean toward ordering more.</div>
+
+  <h4>The Critical Ratio</h4>
+  <div class="formula">Critical Ratio = C<sub>u</sub> / (C<sub>o</sub> + C<sub>u</sub>)</div>
+  <p>This tells you the <strong>optimal probability of NOT stocking out</strong>. If the critical ratio is 0.80, you should order enough to satisfy demand 80% of the time.</p>
+  <div class="formula">Optimal Quantity = &mu; + z &times; &sigma;</div>
+  <p>Where z comes from the normal distribution table corresponding to your critical ratio, &mu; is expected demand, and &sigma; is the standard deviation of demand.</p>
+
+  <h4>Performance Metrics</h4>
+  <ul>
+    <li><strong>Expected Lost Sales</strong> = &sigma; &times; L(z) &mdash; how many customers you'll turn away on average</li>
+    <li><strong>Expected Leftover Inventory</strong> = &sigma; &times; I(z) &mdash; how many unsold units you'll have on average</li>
+    <li><strong>Expected Profit</strong> = C<sub>u</sub> &times; Expected Sales &minus; C<sub>o</sub> &times; Expected Leftover</li>
+    <li><strong>Fill Rate</strong> = Expected Sales / Expected Demand &mdash; what fraction of customers you serve</li>
+    <li><strong>Mismatch Cost</strong> = the profit you lose because demand is uncertain (vs. a perfect-information world)</li>
+  </ul>
+
+  <h4>Strategies to Reduce Mismatch Cost</h4>
+  <ol>
+    <li><strong>Better forecasting</strong> (reduce &sigma;) &mdash; analytics, early sales data, collaboration with suppliers</li>
+    <li><strong>Faster supply chains</strong> (Quick Response) &mdash; like Zara, which produces during the selling season so it can react to actual demand</li>
+    <li><strong>Pre-ordering / crowdfunding</strong> &mdash; learn about demand before committing to production</li>
+  </ol>
+</div>
+
+<!-- CLASS 6 -->
+<div class="week-card wc-6" id="class6">
+  <div class="week-label">Class 6</div>
+  <h3>Supply Chain Coordination &amp; The Beer Game</h3>
+  <p><strong>The big idea:</strong> When multiple companies in a supply chain each make ordering decisions independently, small fluctuations in customer demand get <em>massively amplified</em> as you move upstream. This is the <strong>Bullwhip Effect</strong>.</p>
+
+  <h4>The Beer Distribution Game</h4>
+  <p>A simulation where 4 players each manage one level of a beer supply chain: Retailer &rarr; Wholesaler &rarr; Distributor &rarr; Factory. Only the Retailer sees actual customer demand (~100 cases/week). Everyone else only sees orders from the player downstream.</p>
+  <ul>
+    <li><strong>Information delay:</strong> 2 weeks for an order to be processed</li>
+    <li><strong>Shipping delay:</strong> 2 weeks for products to arrive</li>
+    <li><strong>Costs:</strong> $0.50/unit/week for inventory, $1.00/unit/week for backlog</li>
+    <li><strong>Objective:</strong> Minimize total supply chain cost</li>
+  </ul>
+
+  <div class="analogy">&#128161; <strong>Analogy:</strong> Imagine you're playing a game of telephone, but with ordering quantities. The customer says "I'd like 5% more beer." The retailer panics and orders 20% more. The wholesaler sees that jump and orders 40% more. The distributor orders 80% more. The factory cranks up production. Then demand goes back to normal and everyone is drowning in beer they can't sell. That's the Bullwhip Effect.</div>
+
+  <h4>Why Does This Happen?</h4>
+  <ul>
+    <li><strong>Long lead times:</strong> You have to order weeks before delivery, so you overshoot "just in case"</li>
+    <li><strong>No demand visibility:</strong> Each level only sees orders from the next level, not actual end-customer demand</li>
+    <li><strong>Overreaction to backlog:</strong> When you run short, you panic-order way too much</li>
+    <li><strong>Batch ordering:</strong> Ordering in big batches rather than smooth flows amplifies swings</li>
+  </ul>
+
+  <h4>Periodic Review &amp; Base-Stock Policy</h4>
+  <p>Each period, look at your inventory + what's on the way, and order up to a <strong>target level S</strong>. The target should cover expected demand during the lead time plus a safety buffer for uncertainty.</p>
+  <div class="formula">Order Quantity = Target Level (S) &minus; Current Inventory Position</div>
+
+  <h4>How to Mitigate the Bullwhip Effect</h4>
+  <ul>
+    <li><strong>Share demand information</strong> across all supply chain levels</li>
+    <li><strong>Reduce lead times</strong> (faster shipping, faster order processing)</li>
+    <li><strong>Order frequently in small amounts</strong> rather than large infrequent batches</li>
+    <li><strong>Don't overreact to short-term fluctuations</strong></li>
+    <li><strong>Use supply chain contracts</strong> (buyback agreements, revenue sharing) to align incentives</li>
+  </ul>
+</div>
+
+<!-- CLASS 7 -->
+<div class="week-card wc-7" id="class7">
+  <div class="week-label">Class 7</div>
+  <h3>The GSCM Game &amp; Workshop II</h3>
+  <p><strong>The big idea:</strong> This class is about the <strong>Global Supply Chain Management Simulation</strong> &mdash; a Harvard game where you manage production of two mobile phone models over 4 years, making design, forecasting, and sourcing decisions. Workshop II also practices Newsvendor problems and supply chain contracts.</p>
+
+  <h4>GSCM Game (covered in detail in Part 2 below)</h4>
+  <p>You are the Supply Chain Manager for two phone models. Key decisions: which features to add, how much demand to forecast, which suppliers to use (cheap-but-slow vs. expensive-but-fast). Scored on <strong>Gross Margin</strong> + <strong>Board Votes of Confidence</strong>.</p>
+
+  <h4>Workshop II Topics</h4>
+  <ul>
+    <li><strong>Newsvendor problems:</strong> Fashion handbags (Elite Couture), bakery cakes (Betty Cooker), genetically modified seeds (Mosanto)</li>
+    <li><strong>Supply chain contracts:</strong> Gullo Sunglasses selling to Land's End &mdash; comparing a buyback contract ($65 wholesale + $53 buyback) vs. a no-returns contract ($55 wholesale). The buyback contract encourages Land's End to order more, which can benefit both parties.</li>
+    <li><strong>Key insight:</strong> Contract design shapes ordering behavior. A well-designed buyback or revenue-sharing agreement can coordinate the supply chain and reduce the total mismatch cost.</li>
+  </ul>
+</div>
+
+<!-- ============================================================ -->
+<!--  PART 2: GAME PREPARATION GUIDE                               -->
+<!-- ============================================================ -->
+
+<div class="section-header sh-green" id="game-overview">
+  <span class="section-num">Part 2</span>
+  <h2>&#127918; Game Preparation Guide</h2>
+</div>
+
+<div class="card">
+  <h3>&#127760; What the Game Is About</h3>
+  <p>The <strong>Global Supply Chain Management Simulation V2</strong> (by Harvard Business Publishing) puts you in the role of a <strong>Supply Chain Manager</strong> responsible for producing and selling <strong>two models of mobile phones</strong> over <strong>4 simulated years</strong>.</p>
+  <ul>
+    <li><strong>Model A:</strong> Base model phone (higher volume, lower margin)</li>
+    <li><strong>Model B:</strong> High-end model phone (lower volume, higher margin)</li>
+  </ul>
+  <p>Each year you cycle through <strong>4 rooms</strong> (Design &rarr; Forecasting &rarr; Production &rarr; Boardroom), making decisions that determine your profitability and strategic reputation.</p>
+  <p><strong>Sales season:</strong> May through December only (8 months). No demand outside this window. Demand is spread <em>evenly</em> across these months.</p>
+</div>
+
+<div class="card">
+  <h3>&#127942; How You're Scored</h3>
+  <p>Your composite score is based on two things:</p>
+  <ol>
+    <li><strong>Gross Margin (Profit)</strong> &mdash; revenue minus all costs (production, setup, holding, markdowns)</li>
+    <li><strong>Votes of Confidence</strong> from 5 board members (Mia, Carla, Ankit, Matheo, Adele) &mdash; they evaluate your <em>strategic reasoning</em>, not just your numbers</li>
+  </ol>
+  <div class="callout callout-green">
+    <strong>Important:</strong> Board votes reward good <em>strategy</em>, not just good results. A well-reasoned plan that adapts to changing conditions will earn more votes than lucky guesses.
+  </div>
+</div>
+
+<!-- The Four Rooms -->
+<div class="section-header sh-cyan" id="game-rooms">
+  <span class="section-num">Step by Step</span>
+  <h2>&#128682; The Four Rooms</h2>
+</div>
+
+<div class="card">
+  <h3>&#127912; Room 1: Design Room</h3>
+  <p>Add <strong>up to 4 optional features</strong> to your base phone models:</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Option</th><th>What It Does</th></tr></thead>
+      <tbody>
+        <tr><td>Upgraded Communication</td><td>Changes demand &amp; per-unit profit</td></tr>
+        <tr><td>Exterior Material</td><td>Changes demand &amp; per-unit profit</td></tr>
+        <tr><td>Stylish</td><td>Changes demand &amp; per-unit profit</td></tr>
+        <tr><td>Storage Capacity</td><td>Changes demand &amp; per-unit profit</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h4>What to Pay Attention To:</h4>
+  <ul>
+    <li>Each option shows an <strong>estimated demand impact</strong> (from 6 forecasters + consensus)</li>
+    <li>Each option shows an <strong>impact on per-unit profit</strong> (price, cost, and margin changes)</li>
+    <li>Options affect both models identically in terms of demand impact</li>
+    <li>Look at the <strong>standard deviation</strong> of the demand forecast &mdash; some options increase uncertainty</li>
+  </ul>
+  <div class="callout callout-yellow">
+    <strong>Strategic tip:</strong> An option that boosts demand by 5k/month but drops per-unit profit by $20 might actually <em>hurt</em> total profit. Always multiply: (demand change &times; profit per unit) vs. (existing demand &times; profit change). Do the math.
+  </div>
+  <p>You must write a <strong>strategy statement</strong> explaining your choices. Board members read these.</p>
+</div>
+
+<div class="card">
+  <h3>&#128202; Room 2: Forecasting Room</h3>
+  <p>Predict <strong>monthly demand</strong> (May&ndash;December) for both models.</p>
+  <h4>Key Data Available:</h4>
+  <ul>
+    <li>6 forecasters provide their estimates + a consensus number</li>
+    <li><strong>Model A baseline:</strong> ~60k/month average, Std Dev ~12k</li>
+    <li><strong>Model B baseline:</strong> ~30k/month average, Std Dev ~15k</li>
+  </ul>
+  <h4>Unit Economics (with lowest-cost supplier):</h4>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th></th><th>Model A</th><th>Model B</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Selling Price</strong></td><td>$230</td><td>$270</td></tr>
+        <tr><td><strong>Unit Cost</strong></td><td>$160</td><td>$180</td></tr>
+        <tr><td><strong>Unit Profit</strong></td><td>$70</td><td>$90</td></tr>
+        <tr><td><strong>Markdown Price</strong></td><td>$144</td><td>$54</td></tr>
+        <tr><td><strong>Monthly Holding Cost</strong></td><td>$4.60</td><td>$5.40</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout callout-red">
+    <strong>Critical detail:</strong> At year-end, ALL unsold inventory is sold to a consolidator at the <strong>markdown price</strong>. Model A markdown ($144) is decent &mdash; you lose $16/unit. Model B markdown ($54) is <strong>devastating</strong> &mdash; you lose $126/unit! This means <strong>overproducing Model B is far more costly than overproducing Model A.</strong>
+  </div>
+
+  <p><strong>Note:</strong> Your forecast numbers do NOT directly control your production schedule &mdash; they're for your own planning and the board's evaluation of your thinking.</p>
+</div>
+
+<div class="card">
+  <h3>&#127981; Room 3: Production Room</h3>
+  <p>Choose suppliers, set production quantities, and watch demand unfold month by month.</p>
+  <h4>Your Four Supplier Options:</h4>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Supplier</th><th>Cost A</th><th>Cost B</th><th>Lead Time</th><th>Capacity</th><th>Setup Cost</th></tr></thead>
+      <tbody>
+        <tr><td><strong>FarFarAway</strong></td><td>$160</td><td>$180</td><td style="color:var(--red);">4 months</td><td>60k/mo</td><td>$1M</td></tr>
+        <tr><td><strong>FarAway</strong></td><td>$160</td><td>$180</td><td style="color:var(--orange);">3 months</td><td>60k/mo</td><td>$2M</td></tr>
+        <tr><td><strong>PrettyClose</strong></td><td>$170</td><td>$190</td><td style="color:var(--green);">0 months</td><td>25k/mo</td><td>$1M</td></tr>
+        <tr><td><strong>VeryClose</strong></td><td>$170</td><td>$190</td><td style="color:var(--green);">0 months</td><td>40k/mo</td><td>$2M</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4>The Core Tradeoff:</h4>
+  <div class="compare">
+    <div class="compare-do">
+      <h4>Far Suppliers (FarFarAway, FarAway)</h4>
+      <ul>
+        <li>Cheaper ($160/$180 per unit)</li>
+        <li>Higher capacity (60k/mo each)</li>
+        <li>Must commit 3-4 months before delivery</li>
+        <li>Good for the predictable base demand</li>
+      </ul>
+    </div>
+    <div class="compare-dont">
+      <h4>Close Suppliers (PrettyClose, VeryClose)</h4>
+      <ul>
+        <li>More expensive ($170/$190 per unit)</li>
+        <li>Lower capacity (25k-40k/mo)</li>
+        <li>Zero lead time &mdash; react to actual demand</li>
+        <li>Good for the uncertain portion of demand</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout callout-purple">
+    <strong>Key rule:</strong> You <em>can</em> change your production schedule mid-year, but it costs a <strong>significant penalty</strong>. Plan well upfront.
+  </div>
+</div>
+
+<div class="card">
+  <h3>&#128084; Room 4: Boardroom</h3>
+  <p>Five board members review your performance and strategy:</p>
+  <ul>
+    <li><strong>Mia</strong> (Chair) &mdash; Overall strategy coherence</li>
+    <li><strong>Carla, Ankit, Matheo, Adele</strong> &mdash; Each has a specific area of interest (design choices, financial performance, sourcing, forecasting accuracy)</li>
+  </ul>
+  <p><strong>Listen to their feedback carefully</strong> &mdash; they tell you exactly what to improve. Adapt your strategy each year based on their advice.</p>
+  <p>After the boardroom, you return to the Design Room for the next year. <strong>Repeat for 4 years.</strong></p>
+</div>
+
+<!-- Key Decisions -->
+<div class="section-header sh-purple" id="game-decisions">
+  <span class="section-num">Strategy</span>
+  <h2>&#127919; Key Decisions You Must Make</h2>
+</div>
+
+<div class="strat-grid">
+  <div class="strat-item">
+    <h4>&#127912; 1. Feature Selection</h4>
+    <p>Which of the 4 options to add? Each changes demand volume AND per-unit margin. Maximize total contribution, not just demand or just margin. Check if added demand offsets reduced margin.</p>
+  </div>
+  <div class="strat-item">
+    <h4>&#128202; 2. Demand Forecast</h4>
+    <p>How much will you sell each month? Being too optimistic leads to overproduction waste. Too pessimistic means lost sales. Use the consensus forecast as your anchor and adjust.</p>
+  </div>
+  <div class="strat-item">
+    <h4>&#127981; 3. Supplier Mix</h4>
+    <p>The most impactful decision. Use far suppliers for predictable base demand and close suppliers for the uncertain top. This is a <strong>dual sourcing</strong> strategy &mdash; the course concept of Quick Response in action.</p>
+  </div>
+  <div class="strat-item">
+    <h4>&#128197; 4. Production Timing</h4>
+    <p>When to start production at each supplier? Far suppliers need 3-4 months lead time, so you order in Jan-Feb for May delivery. Close suppliers can start in May when you see actual demand.</p>
+  </div>
+  <div class="strat-item">
+    <h4>&#128176; 5. Capacity Allocation</h4>
+    <p>How much capacity to allocate to Model A vs. Model B at each supplier? Remember: overproducing Model B is devastating (markdown = $54 vs. cost of $180). Be conservative on B.</p>
+  </div>
+  <div class="strat-item">
+    <h4>&#128221; 6. Strategy Statements</h4>
+    <p>Write clear, data-driven justifications for each room. Board members read these and vote based on your reasoning quality, not just outcomes.</p>
+  </div>
+</div>
+
+<!-- KPIs -->
+<div class="section-header sh-orange" id="game-kpis">
+  <span class="section-num">Metrics</span>
+  <h2>&#128200; KPIs &amp; Metrics That Matter</h2>
+</div>
+
+<div class="card">
+  <h3>Financial Metrics</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Metric</th><th>What It Means</th><th>Why It Matters</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Gross Margin</strong></td><td>Revenue &minus; All Costs</td><td>Your primary score. Maximize this.</td></tr>
+        <tr><td><strong>Revenue</strong></td><td>Units Sold &times; Price</td><td>Driven by demand fulfilled, not produced</td></tr>
+        <tr><td><strong>Production Cost</strong></td><td>Units &times; Unit Cost + Setup Costs</td><td>Far suppliers cheaper per unit, more expensive to change</td></tr>
+        <tr><td><strong>Holding Cost</strong></td><td>Inventory &times; $4.60/$5.40 per month</td><td>Penalizes overproduction that sits idle before selling</td></tr>
+        <tr><td><strong>Markdown Loss</strong></td><td>Leftover &times; (Cost &minus; Markdown Price)</td><td>Especially brutal for Model B ($126 loss per unit!)</td></tr>
+        <tr><td><strong>Setup Cost</strong></td><td>$1M or $2M per supplier activated</td><td>Don't activate suppliers you won't fully use</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Strategic Metrics</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Metric</th><th>What Board Members Look For</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Forecast Accuracy</strong></td><td>How close were your predictions to actual demand?</td></tr>
+        <tr><td><strong>Supplier Strategy</strong></td><td>Did you use dual sourcing wisely? Did you adapt?</td></tr>
+        <tr><td><strong>Year-over-Year Improvement</strong></td><td>Did you learn from mistakes and adjust?</td></tr>
+        <tr><td><strong>Risk Management</strong></td><td>Did you hedge against uncertainty or gamble?</td></tr>
+        <tr><td><strong>Votes of Confidence</strong></td><td>5 board members vote each year (except Year 1)</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Common Mistakes -->
+<div class="section-header sh-yellow" id="game-mistakes">
+  <span class="section-num">Watch Out</span>
+  <h2>&#9888;&#65039; Common Mistakes to Avoid</h2>
+</div>
+
+<div class="card">
+  <h3>&#10060; The 8 Deadly Mistakes</h3>
+  <ol>
+    <li>
+      <strong>Overproducing Model B</strong><br>
+      <span style="color:var(--text-dim)">The markdown on Model B is only $54 (vs. $180 cost). That's a $126 loss per unsold unit. Be conservative with B. If in doubt, produce less B and more A.</span>
+    </li>
+    <li>
+      <strong>Using only far suppliers</strong><br>
+      <span style="color:var(--text-dim)">Cheap per unit, yes &mdash; but you commit production 3-4 months before the selling season. If demand differs from forecast, you're stuck with the wrong quantity and no way to adjust.</span>
+    </li>
+    <li>
+      <strong>Using only close suppliers</strong><br>
+      <span style="color:var(--text-dim)">Maximum flexibility, but $10/unit more expensive and limited capacity (25k-40k). Your margins will be thin and you may not have enough capacity for high-demand scenarios.</span>
+    </li>
+    <li>
+      <strong>Ignoring setup costs</strong><br>
+      <span style="color:var(--text-dim)">Each supplier costs $1M-$2M just to activate. Activating all 4 costs $6M &mdash; a huge fixed cost that eats into margin. Only use suppliers you truly need.</span>
+    </li>
+    <li>
+      <strong>Not adapting year to year</strong><br>
+      <span style="color:var(--text-dim)">The board watches for improvement. If you repeat the same mistakes, you lose votes. Use Decision History to learn from each round.</span>
+    </li>
+    <li>
+      <strong>Ignoring board member feedback</strong><br>
+      <span style="color:var(--text-dim)">Each board member has specific areas they evaluate. Their advice tells you exactly what to improve. Read it carefully and address their concerns.</span>
+    </li>
+    <li>
+      <strong>Adding features that destroy margin</strong><br>
+      <span style="color:var(--text-dim)">An option that boosts demand 10% but cuts per-unit profit 30% is a net loss. Always calculate total profit impact = (new demand &times; new margin) vs. (old demand &times; old margin).</span>
+    </li>
+    <li>
+      <strong>Changing production mid-year</strong><br>
+      <span style="color:var(--text-dim)">You can modify production schedules, but the penalty is "significant." Plan well in the Production Room. Use close suppliers for adjustments rather than paying change penalties.</span>
+    </li>
+  </ol>
+</div>
+
+<!-- Theoretical Frameworks -->
+<div class="section-header sh-pink" id="game-frameworks">
+  <span class="section-num">Theory Meets Practice</span>
+  <h2>&#128218; Course Concepts That Apply Directly</h2>
+</div>
+
+<div class="card">
+  <h3>&#128279; Framework Connections</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Course Concept</th><th>How It Applies to the Game</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Newsvendor Model</strong><br><span class="tag tag-purple">Class 5</span></td>
+          <td>You're essentially solving a newsvendor problem each year: order production quantity before knowing demand. C<sub>u</sub> = Selling Price &minus; Unit Cost; C<sub>o</sub> = Unit Cost &minus; Markdown Price. The critical ratio tells you the optimal service level.</td>
+        </tr>
+        <tr>
+          <td><strong>Critical Ratio</strong><br><span class="tag tag-purple">Class 5</span></td>
+          <td>
+            <strong>Model A:</strong> C<sub>u</sub> = $70, C<sub>o</sub> = $16 &rarr; CR = 70/86 = <strong>0.81</strong> (order generously)<br>
+            <strong>Model B:</strong> C<sub>u</sub> = $90, C<sub>o</sub> = $126 &rarr; CR = 90/216 = <strong>0.42</strong> (order conservatively!)
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Quick Response / Zara Model</strong><br><span class="tag tag-blue">Class 5</span></td>
+          <td>Close suppliers with zero lead time are your "Quick Response" option. Use them to produce the uncertain portion of demand during the selling season, just like Zara produces 85% in-season.</td>
+        </tr>
+        <tr>
+          <td><strong>Mismatch Cost</strong><br><span class="tag tag-purple">Class 5</span></td>
+          <td>Every unit you overproduce or undersell is mismatch cost. With dual sourcing (far + close), you reduce mismatch by committing base demand to far suppliers and using close suppliers to react.</td>
+        </tr>
+        <tr>
+          <td><strong>Safety Stock</strong><br><span class="tag tag-green">Class 5-6</span></td>
+          <td>The close-supplier capacity is essentially your "safety stock" of production capacity &mdash; reserved to handle demand uncertainty.</td>
+        </tr>
+        <tr>
+          <td><strong>Bullwhip Effect</strong><br><span class="tag tag-red">Class 6</span></td>
+          <td>Don't overreact to one year's results. If Year 1 demand was high, don't massively ramp up Year 2 production. Demand can revert. Use data, not emotion.</td>
+        </tr>
+        <tr>
+          <td><strong>Lead Times &amp; Information Delays</strong><br><span class="tag tag-red">Class 6</span></td>
+          <td>Far suppliers have 3-4 month lead times. You order blindly. Close suppliers have 0 lead time. The value of short lead times is the ability to react to actual demand &mdash; this is exactly what the Beer Game teaches.</td>
+        </tr>
+        <tr>
+          <td><strong>Little's Law</strong><br><span class="tag tag-blue">Class 1</span></td>
+          <td>Holding cost accumulates on inventory over time. If you overproduce and inventory sits for months, I &times; holding cost per month adds up. Minimize time inventory sits unsold.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!--  PART 3: DEMAND PREDICTION STRATEGY                           -->
+<!-- ============================================================ -->
+
+<div class="section-header sh-cyan" id="demand-drivers">
+  <span class="section-num">Part 3</span>
+  <h2>&#128161; Demand Prediction Strategy</h2>
+</div>
+
+<div class="card">
+  <h3>&#127919; What Drives Demand in This Game</h3>
+  <p>Demand in the GSCM simulation is driven by several factors you can observe and analyze:</p>
+  <ol>
+    <li><strong>Base demand for each model:</strong> Model A ~60k/month, Model B ~30k/month (consensus forecast without options)</li>
+    <li><strong>Feature selections:</strong> Each option you add in the Design Room shifts demand up or down by a known estimated amount. The demand impact is shown for each forecaster.</li>
+    <li><strong>Randomness:</strong> Actual demand fluctuates around the forecast with a known standard deviation (Model A: &sigma;&asymp;12k, Model B: &sigma;&asymp;15k). This randomness is unavoidable.</li>
+    <li><strong>Year-to-year shifts:</strong> Demand patterns may evolve across the 4 years. Watch actual vs. forecast each year to detect trends.</li>
+  </ol>
+  <div class="callout callout-blue">
+    <strong>Key insight:</strong> Model B has a <em>higher coefficient of variation</em> (15/30 = 0.50) than Model A (12/60 = 0.20). This means Model B demand is <strong>relatively 2.5&times; more uncertain</strong>. Combined with its devastating markdown loss, this makes Model B the riskier product by far.
+  </div>
+</div>
+
+<div class="card" id="demand-signals">
+  <h3>&#128225; Signals &amp; Data Points to Watch</h3>
+  <h4>In the Design Room:</h4>
+  <ul>
+    <li><strong>Forecaster agreement:</strong> If all 6 forecasters agree on demand impact, it's more reliable. If they disagree wildly, the estimate is uncertain &mdash; be cautious.</li>
+    <li><strong>Standard deviation changes:</strong> Some options increase the std dev of the forecast (more uncertainty). Higher std dev = harder to predict = more risk.</li>
+    <li><strong>Demand sensitivity:</strong> Note how much demand shifts per option. Some options give big demand boosts; others are marginal.</li>
+  </ul>
+
+  <h4>In the Forecasting Room:</h4>
+  <ul>
+    <li><strong>Consensus vs. individual forecasters:</strong> The consensus is your best single estimate. But look at the range &mdash; if forecasters range from 45k to 75k, there's high uncertainty.</li>
+    <li><strong>Average and Std Dev:</strong> These are explicitly shown. Use them for newsvendor calculations.</li>
+  </ul>
+
+  <h4>In the Production Room (as months unfold):</h4>
+  <ul>
+    <li><strong>Actual demand vs. estimate:</strong> As months progress, you see real demand. Compare to your forecast. If demand is consistently above forecast, you may need to ramp up close-supplier production.</li>
+    <li><strong>Inventory accumulation:</strong> If inventory is building up, demand is lower than expected. If you're selling out, demand is higher.</li>
+  </ul>
+
+  <h4>Year Over Year:</h4>
+  <ul>
+    <li><strong>Track A/F ratios:</strong> Actual demand / Forecast demand for each year. If your forecast consistently overshoots (A/F < 1), lower future forecasts. If it undershoots (A/F > 1), raise them.</li>
+    <li><strong>Board member hints:</strong> Sometimes board feedback implicitly tells you about demand patterns.</li>
+  </ul>
+</div>
+
+<div class="card" id="demand-heuristics">
+  <h3>&#129518; Practical Forecasting Heuristics</h3>
+
+  <h4>Heuristic 1: Use the Newsvendor Critical Ratio</h4>
+  <p>Calculate the optimal production quantity using the newsvendor formula:</p>
+  <div class="formula">
+Model A: C<sub>u</sub> = $70, C<sub>o</sub> = $160 - $144 = $16<br>
+Critical Ratio = 70 / (70 + 16) = <strong>0.81</strong> &rarr; z &asymp; 0.88<br>
+Q<sub>A</sub> = 60 + 0.88 &times; 12 = <strong>~70.6k/month</strong> (order above the mean)
+  </div>
+  <div class="formula">
+Model B: C<sub>u</sub> = $90, C<sub>o</sub> = $180 - $54 = $126<br>
+Critical Ratio = 90 / (90 + 126) = <strong>0.42</strong> &rarr; z &asymp; -0.20<br>
+Q<sub>B</sub> = 30 + (-0.20) &times; 15 = <strong>~27k/month</strong> (order BELOW the mean!)
+  </div>
+
+  <div class="callout callout-green">
+    <strong>Crucial insight:</strong> The newsvendor math says you should order <em>above</em> the mean for Model A (because overstock is cheap to liquidate) but <em>below</em> the mean for Model B (because overstock is extremely costly). This is counterintuitive but mathematically optimal.
+  </div>
+
+  <h4>Heuristic 2: Dual Sourcing Split</h4>
+  <p>Commit the "safe" base quantity to far suppliers (cheap, long lead time). Reserve close-supplier capacity for adjustments.</p>
+  <ul>
+    <li><strong>Far supplier quantity:</strong> A conservative amount you're almost certain to sell (e.g., &mu; &minus; 1&sigma; or slightly higher)</li>
+    <li><strong>Close supplier capacity:</strong> Reserve this to "top up" if demand materializes higher than expected</li>
+  </ul>
+
+  <div class="formula">
+Example split for Model A (60k &plusmn; 12k):<br>
+Far supplier: ~50-55k/month (conservative base) &rarr; committed 3-4 months ahead<br>
+Close supplier: up to 25-40k/month reserve &rarr; deployed when you see actual demand
+  </div>
+
+  <h4>Heuristic 3: Bayesian Updating (Learn as You Go)</h4>
+  <p>As months unfold within a year, update your beliefs:</p>
+  <ul>
+    <li>If May-June demand averages 65k for Model A (vs. 60k forecast), the full-year average is likely above forecast</li>
+    <li>Use close suppliers to ramp up production in real-time</li>
+    <li>Across years, calculate your A/F ratio: if Year 1 actual was 10% above forecast, adjust Year 2 forecast up 5-10%</li>
+  </ul>
+
+  <h4>Heuristic 4: The "Regret Minimization" Test</h4>
+  <p>Before finalizing quantities, ask yourself two questions:</p>
+  <ol>
+    <li>"If demand is 1 standard deviation above my forecast, how much profit do I lose from stockouts?" (Model A: 12k &times; $70 = $840k lost. Model B: 15k &times; $90 = $1.35M lost)</li>
+    <li>"If demand is 1 standard deviation below my forecast, how much do I lose from overstock?" (Model A: 12k &times; $16 = $192k lost. Model B: 15k &times; $126 = $1.89M lost!)</li>
+  </ol>
+  <p>For Model A, the stockout regret ($840k) is much worse than overstock regret ($192k) &rarr; lean toward ordering more.<br>
+  For Model B, the overstock regret ($1.89M) is worse than stockout regret ($1.35M) &rarr; lean toward ordering less.</p>
+
+  <h4>Heuristic 5: Watch for Demand Smoothness</h4>
+  <p>The game states demand is "consistent" (evenly spread) across May-December. This means:</p>
+  <ul>
+    <li>No seasonal peaks within the selling season (unlike real life)</li>
+    <li>Monthly demand should be roughly the same each month</li>
+    <li>If early months show high/low demand, it's likely the <em>whole season</em> will be high/low</li>
+    <li>This makes early-month data extremely valuable for mid-course corrections using close suppliers</li>
+  </ul>
+</div>
+
+<div class="card" id="demand-theory">
+  <h3>&#128210; Connecting to Course Theory</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Course Concept</th><th>Application to Demand Prediction</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Newsvendor Model &amp; Critical Ratio</strong></td>
+          <td>Directly calculate optimal production: Q* = &mu; + z(&sigma;). Model A has a high critical ratio (order above mean); Model B has a low critical ratio (order below mean). This is the single most valuable tool for this game.</td>
+        </tr>
+        <tr>
+          <td><strong>Mismatch Cost</strong></td>
+          <td>The cost of getting it wrong. Model B's mismatch cost is enormous because of the asymmetric markdown. Understanding mismatch cost helps you prioritize where to invest in better forecasts (focus on B).</td>
+        </tr>
+        <tr>
+          <td><strong>A/F Ratio Method</strong></td>
+          <td>Track Actual/Forecast ratio each year. Multiply next year's forecast by the average A/F ratio to debias your estimates. If you consistently over-forecast by 10%, your A/F ratio is 0.9 &mdash; multiply next forecast by 0.9.</td>
+        </tr>
+        <tr>
+          <td><strong>Bullwhip Effect</strong></td>
+          <td>Don't overreact to one year of high or low demand. Demand may mean-revert. Adjust gradually, not dramatically. The Beer Game taught us that overreaction amplifies problems.</td>
+        </tr>
+        <tr>
+          <td><strong>Quick Response (Zara Model)</strong></td>
+          <td>Close suppliers are your Quick Response capability. Reserve capacity there so you can react to actual demand signals during the selling season, just like Zara does in fashion.</td>
+        </tr>
+        <tr>
+          <td><strong>Safety Stock &amp; Lead Times</strong></td>
+          <td>Longer lead time = more uncertainty to hedge against = more safety stock needed. Far suppliers (3-4 month lead time) require you to forecast further ahead, where forecasts are less accurate. Close suppliers (0 lead time) require no safety stock &mdash; they're perfectly responsive.</td>
+        </tr>
+        <tr>
+          <td><strong>Coefficient of Variation</strong></td>
+          <td>Model B has CV = 0.50 vs. Model A CV = 0.20. Higher CV means forecasting is relatively harder. The mismatch cost table from Class 5 shows that high-CV products with low critical ratios have massive mismatch costs (up to 97% of max profit). Model B fits this profile.</td>
+        </tr>
+        <tr>
+          <td><strong>Overage vs. Underage Costs</strong></td>
+          <td>Always compute both. When underage >> overage (like Model A), order generously. When overage >> underage (like Model B), order conservatively. Let the math guide you, not gut feelings.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- MASTER STRATEGY SUMMARY -->
+<div class="section-header sh-green">
+  <span class="section-num">Putting It All Together</span>
+  <h2>&#127942; Your Master Game Plan</h2>
+</div>
+
+<div class="card">
+  <h3>&#128640; The Optimal Strategy in 6 Steps</h3>
+  <ol>
+    <li>
+      <strong>Design Room:</strong> Only add features where (demand increase &times; new margin) &gt; (old demand &times; old margin). Avoid options that increase standard deviation significantly. Keep it simple in Year 1 while you learn the game.
+    </li>
+    <li>
+      <strong>Forecasting Room:</strong> Use the consensus as your baseline. Note the standard deviations. Calculate the critical ratio for each model to determine whether to forecast above or below the mean.
+    </li>
+    <li>
+      <strong>Production Room &mdash; Dual Sourcing:</strong>
+      <ul>
+        <li>Commit a conservative base quantity to <strong>FarFarAway or FarAway</strong> (cheap, but locked in early)</li>
+        <li>Reserve <strong>PrettyClose or VeryClose</strong> capacity for reactive adjustments during the season</li>
+        <li>For <strong>Model A:</strong> Commit ~50-55k/month to far supplier; use close supplier to ramp up if demand is strong</li>
+        <li>For <strong>Model B:</strong> Commit only ~22-25k/month to far supplier (below the mean!); use close supplier cautiously</li>
+      </ul>
+    </li>
+    <li>
+      <strong>During the Season:</strong> Watch actual demand month by month. If demand &gt; forecast, activate close supplier capacity. If demand &lt; forecast, reduce or stop close supplier orders.
+    </li>
+    <li>
+      <strong>Board Room:</strong> Write clear strategy statements. Reference dual sourcing, critical ratios, and demand uncertainty. Show you understand the tradeoffs. Adapt based on their feedback.
+    </li>
+    <li>
+      <strong>Year Over Year:</strong> Track your A/F ratios. Adjust forecasts. Learn which features actually boosted demand. Refine supplier allocations. Show the board you're improving.
+    </li>
+  </ol>
+</div>
+
+<div class="card">
+  <h3>&#128203; Quick Reference Cheat Sheet</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th></th><th>Model A</th><th>Model B</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Base Demand</strong></td><td>~60k/month</td><td>~30k/month</td></tr>
+        <tr><td><strong>Std Dev</strong></td><td>~12k</td><td>~15k</td></tr>
+        <tr><td><strong>CV</strong></td><td>0.20 (low uncertainty)</td><td>0.50 (high uncertainty)</td></tr>
+        <tr><td><strong>Unit Profit</strong></td><td>$70</td><td>$90</td></tr>
+        <tr><td><strong>Markdown Price</strong></td><td>$144 (lose $16/unit)</td><td>$54 (lose $126/unit!)</td></tr>
+        <tr><td><strong>C<sub>u</sub> (underage)</strong></td><td>$70</td><td>$90</td></tr>
+        <tr><td><strong>C<sub>o</sub> (overage)</strong></td><td>$16</td><td>$126</td></tr>
+        <tr><td><strong>Critical Ratio</strong></td><td>0.81 (order above mean)</td><td>0.42 (order below mean)</td></tr>
+        <tr><td><strong>Optimal z</strong></td><td>+0.88</td><td>-0.20</td></tr>
+        <tr><td><strong>Optimal Q</strong></td><td>~70.6k/month</td><td>~27k/month</td></tr>
+        <tr><td><strong>Strategy</strong></td><td style="color:var(--green)">Be aggressive</td><td style="color:var(--red)">Be conservative</td></tr>
+        <tr><td><strong>Holding Cost</strong></td><td>$4.60/mo</td><td>$5.40/mo</td></tr>
+        <tr><td><strong>Season</strong></td><td colspan="2">May-December (8 months, even demand)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout callout-yellow" style="margin-top:1.5rem">
+    <strong>Remember:</strong> These numbers are starting estimates based on the baseline scenario (no options added, lowest-cost supplier). Recalculate after making design choices, as options change the demand mean, standard deviation, and per-unit costs/profits.
+  </div>
+</div>
+
+<!-- KEY FORMULAS -->
+<div class="card">
+  <h3>&#128290; Essential Formulas to Have Ready</h3>
+  <div class="formula">
+<strong>Little's Law:</strong> I = R &times; T<br><br>
+<strong>Capacity:</strong> (1 / Activity Time) &times; # Resources<br><br>
+<strong>Utilization:</strong> Flow Rate / Capacity<br><br>
+<strong>Inventory Turns:</strong> COGS / Inventory<br><br>
+<strong>Wait Time (1 server):</strong> T<sub>q</sub> = p &times; [u/(1-u)] &times; [(CV<sub>a</sub>&sup2; + CV<sub>p</sub>&sup2;)/2]<br><br>
+<strong>Newsvendor Critical Ratio:</strong> F(Q*) = C<sub>u</sub> / (C<sub>u</sub> + C<sub>o</sub>)<br><br>
+<strong>Optimal Order:</strong> Q* = &mu; + z &times; &sigma;<br><br>
+<strong>Expected Lost Sales:</strong> &sigma; &times; L(z)<br><br>
+<strong>Expected Leftover:</strong> &sigma; &times; I(z)<br><br>
+<strong>Expected Profit:</strong> C<sub>u</sub> &times; E[Sales] - C<sub>o</sub> &times; E[Leftover]<br><br>
+<strong>Fill Rate:</strong> 1 - [&sigma; &times; L(z)] / &mu;
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════ PART 4: LIVE GAME TOOLS ════════════════════════════════════════════════ -->
+<div class="section-header sh-cyan" id="part4" style="margin-top:4rem">
+  <span class="section-num">Part 4</span>
+  <h2>&#128295; Live Game Decision Tools</h2>
+</div>
+<p style="color:var(--text-dim); margin-bottom:1.5rem; font-size:0.93rem;">
+  Enter your actual game data below. These calculators give you real-time recommendations during gameplay. All inputs auto-save to your browser.
+</p>
+
+<!-- Supplier Configuration (global, shared by tools) -->
+<details class="tool-card" id="supplier-config-panel" open>
+  <summary><h3>&#9881; Supplier Configuration</h3></summary>
+  <p style="color:var(--text-dim);font-size:0.85rem;margin-bottom:0.8rem;">
+    Edit supplier names, capacities, costs, lead times, and setup costs. Changes apply to the Supplier Mix tool automatically.
+  </p>
+  <div id="supplier-editor"><!-- rendered dynamically by suppliers.js --></div>
+  <div class="supplier-config-actions">
+    <button class="tool-btn" onclick="GSCM.addSupplier()">+ Add Supplier</button>
+    <button class="tool-btn-reset" onclick="GSCM.resetSuppliers()">&#8635; Reset to Defaults</button>
+  </div>
+</details>
+
+<!-- Tool Tabs -->
+<div class="tool-tabs" role="tablist">
+  <button class="tool-tab active" data-tool="tool-design" role="tab" onclick="switchToolTab('tool-design')">&#128295; Design Room</button>
+  <button class="tool-tab" data-tool="tool-newsvendor" role="tab" onclick="switchToolTab('tool-newsvendor')">&#128202; Newsvendor</button>
+  <button class="tool-tab" data-tool="tool-supplier" role="tab" onclick="switchToolTab('tool-supplier')">&#127981; Supplier Mix</button>
+  <button class="tool-tab" data-tool="tool-tracker" role="tab" onclick="switchToolTab('tool-tracker')">&#128200; Mid-Season</button>
+  <button class="tool-tab" data-tool="tool-yoy" role="tab" onclick="switchToolTab('tool-yoy')">&#128203; Year-over-Year</button>
+</div>
+
+<!-- ──────────── TOOL 1: Design Room Calculator ──────────── -->
+<div class="tool-panel active" id="tool-design">
+  <div class="tool-card">
+    <h3>&#128295; Design Room Calculator</h3>
+    <p style="color:var(--text-dim);font-size:0.88rem;margin-bottom:1rem;">
+      Evaluate each design option by its impact on monthly profit. Enter base values and option changes to see which choices maximize revenue.
+    </p>
+
+    <h4>Baseline Values</h4>
+    <div class="tool-input-row">
+      <div class="tool-input-group">
+        <label class="tool-label">Base Demand A (k/mo)</label>
+        <input class="tool-input" type="number" id="t1-baseDA" value="60" step="1">
+      </div>
+      <div class="tool-input-group">
+        <label class="tool-label">Base Demand B (k/mo)</label>
+        <input class="tool-input" type="number" id="t1-baseDB" value="30" step="1">
+      </div>
+      <div class="tool-input-group">
+        <label class="tool-label">Base Profit A ($/unit)</label>
+        <input class="tool-input" type="number" id="t1-baseProfA" value="70" step="1">
+      </div>
+      <div class="tool-input-group">
+        <label class="tool-label">Base Profit B ($/unit)</label>
+        <input class="tool-input" type="number" id="t1-baseProfB" value="90" step="1">
+      </div>
+    </div>
+
+    <hr class="tool-divider">
+    <h4>Design Options</h4>
+
+    <div id="t1-options">
+      <div class="tool-input-row" style="margin-bottom:0.6rem;" data-opt="0">
+        <div class="tool-input-group" style="flex:1.5">
+          <label class="tool-label">Option 1 Name</label>
+          <input class="tool-input" type="text" id="t1-opt0-name" placeholder="e.g. New Zipper">
+        </div>
+        <div class="tool-input-group">
+          <label class="tool-label">&Delta; Demand A (k)</label>
+          <input class="tool-input" type="number" id="t1-opt0-dA" value="0" step="1">
+        </div>
+        <div class="tool-input-group">
+          <label class="tool-label">&Delta; Demand B (k)</label>
+          <input class="tool-input" type="number" id="t1-opt0-dB" value="0" step="1">
+        </div>
+        <div class="tool-input-group">
+          <label class="tool-label">&Delta; Profit A ($)</label>
+          <input class="tool-input" type="number" id="t1-opt0-pA" value="0" step="1">
+        </div>
+        <div class="tool-input-group">
+          <label class="tool-label">&Delta; Profit B ($)</label>
+          <input class="tool-input" type="number" id="t1-opt0-pB" value="0" step="1">
+        </div>
+      </div>
+      <div class="tool-input-row" style="margin-bottom:0.6rem;" data-opt="1">
+        <div class="tool-input-group" style="flex:1.5">
+          <label class="tool-label">Option 2 Name</label>
+          <input class="tool-input" type="text" id="t1-opt1-name" placeholder="e.g. Premium Fabric">
+        </div>
+        <div class="tool-input-group">
+          <label class="tool-label">&Delta; Demand A (k)</label>
+          <input class="tool-input" type="number" id="t1-opt1-dA" value="0" step="1">
+        </div>
+        <div class="tool-input-group">
+          <label class="tool-label">&Delta; Demand B (k)</label>
+          <input class="tool-input" type="number" id="t1-opt1-dB" value="0" step="1">
+        </div>
+        <div class="tool-input-group">
+          <label class="tool-label">&Delta; Profit A ($)</label>
+          <input class="tool-input" type="number" id="t1-opt1-pA" value="0" step="1">
+        </div>
+        <div class="tool-input-group">
+          <label class="tool-label">&Delta; Profit B ($)</label>
+          <input class="tool-input" type="number" id="t1-opt1-pB" value="0" step="1">
+        </div>
+      </div>
+      <div class="tool-input-row" style="margin-bottom:0.6rem;" data-opt="2">
+        <div class="tool-input-group" style="flex:1.5">
+          <label class="tool-label">Option 3 Name</label>
+          <input class="tool-input" type="text" id="t1-opt2-name" placeholder="e.g. Eco Material">
+        </div>
+        <div class="tool-input-group">
+          <label class="tool-label">&Delta; Demand A (k)</label>
+          <input class="tool-input" type="number" id="t1-opt2-dA" value="0" step="1">
+        </div>
+        <div class="tool-input-group">
+          <label class="tool-label">&Delta; Demand B (k)</label>
+          <input class="tool-input" type="number" id="t1-opt2-dB" value="0" step="1">
+        </div>
+        <div class="tool-input-group">
+          <label class="tool-label">&Delta; Profit A ($)</label>
+          <input class="tool-input" type="number" id="t1-opt2-pA" value="0" step="1">
+        </div>
+        <div class="tool-input-group">
+          <label class="tool-label">&Delta; Profit B ($)</label>
+          <input class="tool-input" type="number" id="t1-opt2-pB" value="0" step="1">
+        </div>
+      </div>
+      <div class="tool-input-row" style="margin-bottom:0.6rem;" data-opt="3">
+        <div class="tool-input-group" style="flex:1.5">
+          <label class="tool-label">Option 4 Name</label>
+          <input class="tool-input" type="text" id="t1-opt3-name" placeholder="e.g. Logo Redesign">
+        </div>
+        <div class="tool-input-group">
+          <label class="tool-label">&Delta; Demand A (k)</label>
+          <input class="tool-input" type="number" id="t1-opt3-dA" value="0" step="1">
+        </div>
+        <div class="tool-input-group">
+          <label class="tool-label">&Delta; Demand B (k)</label>
+          <input class="tool-input" type="number" id="t1-opt3-dB" value="0" step="1">
+        </div>
+        <div class="tool-input-group">
+          <label class="tool-label">&Delta; Profit A ($)</label>
+          <input class="tool-input" type="number" id="t1-opt3-pA" value="0" step="1">
+        </div>
+        <div class="tool-input-group">
+          <label class="tool-label">&Delta; Profit B ($)</label>
+          <input class="tool-input" type="number" id="t1-opt3-pB" value="0" step="1">
+        </div>
+      </div>
+    </div>
+
+    <button class="tool-btn" onclick="calcDesign()">&#9889; Calculate Profit Impact</button>
+    <button class="tool-btn-reset" onclick="resetTool('design')">&#8635; Reset</button>
+
+    <div class="result-panel" id="result-design"></div>
+  </div>
+</div>
+
+<!-- ──────────── TOOL 2: Newsvendor Optimizer ──────────── -->
+<div class="tool-panel" id="tool-newsvendor">
+  <div class="tool-card">
+    <h3>&#128202; Newsvendor Optimizer</h3>
+    <p style="color:var(--text-dim);font-size:0.88rem;margin-bottom:1rem;">
+      Computes the optimal order quantity using the critical ratio, expected sales, expected leftover, and expected profit. Enter the parameters for each model side by side.
+    </p>
+
+    <div class="tool-grid-2">
+      <div class="tool-col">
+        <div class="tool-col-header">Model A</div>
+        <div class="tool-input-group">
+          <label class="tool-label">Selling Price ($/unit)</label>
+          <input class="tool-input" type="number" id="t2-priceA" value="230" step="1">
+        </div>
+        <div class="tool-input-group">
+          <label class="tool-label">Unit Cost ($/unit)</label>
+          <input class="tool-input" type="number" id="t2-costA" value="160" step="1">
+        </div>
+        <div class="tool-input-group">
+          <label class="tool-label">Markdown / Salvage ($/unit)</label>
+          <input class="tool-input" type="number" id="t2-salvageA" value="144" step="1">
+        </div>
+        <div class="tool-input-group">
+          <label class="tool-label">Holding Cost ($/unit)</label>
+          <input class="tool-input" type="number" id="t2-holdA" value="0" step="0.5">
+        </div>
+        <div class="tool-input-group">
+          <label class="tool-label">Demand Mean &mu; (k/mo)</label>
+          <input class="tool-input" type="number" id="t2-muA" value="60" step="1">
+        </div>
+        <div class="tool-input-group">
+          <label class="tool-label">Demand Std Dev &sigma; (k/mo)</label>
+          <input class="tool-input" type="number" id="t2-sigA" value="12" step="1">
+        </div>
+      </div>
+      <div class="tool-col">
+        <div class="tool-col-header">Model B</div>
+        <div class="tool-input-group">
+          <label class="tool-label">Selling Price ($/unit)</label>
+          <input class="tool-input" type="number" id="t2-priceB" value="280" step="1">
+        </div>
+        <div class="tool-input-group">
+          <label class="tool-label">Unit Cost ($/unit)</label>
+          <input class="tool-input" type="number" id="t2-costB" value="180" step="1">
+        </div>
+        <div class="tool-input-group">
+          <label class="tool-label">Markdown / Salvage ($/unit)</label>
+          <input class="tool-input" type="number" id="t2-salvageB" value="162" step="1">
+        </div>
+        <div class="tool-input-group">
+          <label class="tool-label">Holding Cost ($/unit)</label>
+          <input class="tool-input" type="number" id="t2-holdB" value="0" step="0.5">
+        </div>
+        <div class="tool-input-group">
+          <label class="tool-label">Demand Mean &mu; (k/mo)</label>
+          <input class="tool-input" type="number" id="t2-muB" value="30" step="1">
+        </div>
+        <div class="tool-input-group">
+          <label class="tool-label">Demand Std Dev &sigma; (k/mo)</label>
+          <input class="tool-input" type="number" id="t2-sigB" value="6" step="1">
+        </div>
+      </div>
+    </div>
+
+    <div class="tool-input-row" style="margin-top:1rem;">
+      <div class="tool-input-group">
+        <label class="tool-label">Season Length (months)</label>
+        <input class="tool-input" type="number" id="t2-season" value="8" step="1" style="max-width:160px;">
+      </div>
+    </div>
+
+    <button class="tool-btn" onclick="calcNewsvendor()">&#9889; Compute Optimal Order</button>
+    <button class="tool-btn-reset" onclick="resetTool('newsvendor')">&#8635; Reset</button>
+
+    <div class="result-panel" id="result-newsvendor"></div>
+  </div>
+</div>
+
+<!-- ──────────── TOOL 3: Supplier Mix Advisor ──────────── -->
+<div class="tool-panel" id="tool-supplier">
+  <div class="tool-card">
+    <h3>&#127981; Supplier Mix Advisor</h3>
+    <p style="color:var(--text-dim);font-size:0.88rem;margin-bottom:1rem;">
+      Compares all combinations of selected suppliers. Production is allocated from cheapest to most expensive, overflowing to the next supplier.
+    </p>
+
+    <div class="tool-input-row">
+      <div class="tool-input-group">
+        <label class="tool-label">Target Monthly Q &mdash; Model A (k)</label>
+        <input class="tool-input" type="number" id="t3-targetA" value="65" step="1">
+      </div>
+      <div class="tool-input-group">
+        <label class="tool-label">Target Monthly Q &mdash; Model B (k)</label>
+        <input class="tool-input" type="number" id="t3-targetB" value="32" step="1">
+      </div>
+      <div class="tool-input-group">
+        <label class="tool-label">Holding Cost ($/unit/mo)</label>
+        <input class="tool-input" type="number" id="t3-holding" value="2" step="0.5">
+      </div>
+    </div>
+
+    <hr class="tool-divider">
+    <h4>Select Suppliers</h4>
+    <div id="t3-supplier-checkboxes"><!-- rendered dynamically by suppliers.js --></div>
+
+    <button class="tool-btn" onclick="calcSupplier()">&#9889; Compare Supplier Combos</button>
+    <button class="tool-btn-reset" onclick="resetTool('supplier')">&#8635; Reset</button>
+
+    <div class="result-panel" id="result-supplier"></div>
+  </div>
+</div>
+
+<!-- ──────────── TOOL 4: Mid-Season Demand Tracker ──────────── -->
+<div class="tool-panel" id="tool-tracker">
+  <div class="tool-card">
+    <h3>&#128200; Mid-Season Demand Tracker</h3>
+    <p style="color:var(--text-dim);font-size:0.88rem;margin-bottom:1rem;">
+      Enter actual demand as the season progresses. The tracker computes a running A/F ratio and recommends close-supplier orders.
+    </p>
+
+    <div class="tool-input-row" style="margin-bottom:1rem;">
+      <div class="tool-input-group">
+        <label class="tool-label">Original Forecast A (k/mo)</label>
+        <input class="tool-input" type="number" id="t4-fcstA" value="60" step="1">
+      </div>
+      <div class="tool-input-group">
+        <label class="tool-label">Original Forecast B (k/mo)</label>
+        <input class="tool-input" type="number" id="t4-fcstB" value="30" step="1">
+      </div>
+    </div>
+
+    <h4>Monthly Actuals (k units &mdash; leave blank if not yet observed)</h4>
+    <div class="month-grid">
+      <div class="month-label" style="visibility:hidden">Month</div>
+      <div style="text-align:center;font-size:0.75rem;font-weight:800;color:var(--purple);text-transform:uppercase;">Model A</div>
+      <div style="text-align:center;font-size:0.75rem;font-weight:800;color:var(--purple);text-transform:uppercase;">Model B</div>
+
+      <div class="month-label">May</div>
+      <input class="tool-input" type="number" id="t4-m0A" placeholder="&mdash;" step="0.1">
+      <input class="tool-input" type="number" id="t4-m0B" placeholder="&mdash;" step="0.1">
+
+      <div class="month-label">Jun</div>
+      <input class="tool-input" type="number" id="t4-m1A" placeholder="&mdash;" step="0.1">
+      <input class="tool-input" type="number" id="t4-m1B" placeholder="&mdash;" step="0.1">
+
+      <div class="month-label">Jul</div>
+      <input class="tool-input" type="number" id="t4-m2A" placeholder="&mdash;" step="0.1">
+      <input class="tool-input" type="number" id="t4-m2B" placeholder="&mdash;" step="0.1">
+
+      <div class="month-label">Aug</div>
+      <input class="tool-input" type="number" id="t4-m3A" placeholder="&mdash;" step="0.1">
+      <input class="tool-input" type="number" id="t4-m3B" placeholder="&mdash;" step="0.1">
+
+      <div class="month-label">Sep</div>
+      <input class="tool-input" type="number" id="t4-m4A" placeholder="&mdash;" step="0.1">
+      <input class="tool-input" type="number" id="t4-m4B" placeholder="&mdash;" step="0.1">
+
+      <div class="month-label">Oct</div>
+      <input class="tool-input" type="number" id="t4-m5A" placeholder="&mdash;" step="0.1">
+      <input class="tool-input" type="number" id="t4-m5B" placeholder="&mdash;" step="0.1">
+
+      <div class="month-label">Nov</div>
+      <input class="tool-input" type="number" id="t4-m6A" placeholder="&mdash;" step="0.1">
+      <input class="tool-input" type="number" id="t4-m6B" placeholder="&mdash;" step="0.1">
+
+      <div class="month-label">Dec</div>
+      <input class="tool-input" type="number" id="t4-m7A" placeholder="&mdash;" step="0.1">
+      <input class="tool-input" type="number" id="t4-m7B" placeholder="&mdash;" step="0.1">
+    </div>
+
+    <button class="tool-btn" onclick="calcTracker()">&#9889; Analyze Demand</button>
+    <button class="tool-btn-reset" onclick="resetTool('tracker')">&#8635; Reset</button>
+
+    <div class="result-panel" id="result-tracker"></div>
+  </div>
+</div>
+
+<!-- ──────────── TOOL 5: Year-over-Year Performance Tracker ──────────── -->
+<div class="tool-panel" id="tool-yoy">
+  <div class="tool-card">
+    <h3>&#128203; Year-over-Year Performance Tracker</h3>
+    <p style="color:var(--text-dim);font-size:0.88rem;margin-bottom:1rem;">
+      Track performance across game years to detect forecast bias and profit trends. Fill in data after each simulated year.
+    </p>
+
+    <div class="yoy-grid">
+      <div class="yoy-label"></div>
+      <div class="yoy-header">Forecast Demand</div>
+      <div class="yoy-header">Actual Demand</div>
+      <div class="yoy-header">Units Produced</div>
+      <div class="yoy-header">Units Sold</div>
+      <div class="yoy-header">Profit ($k)</div>
+
+      <div class="yoy-label">Year 1</div>
+      <input class="tool-input" type="number" id="t5-y0-fc" placeholder="&mdash;" step="1">
+      <input class="tool-input" type="number" id="t5-y0-act" placeholder="&mdash;" step="1">
+      <input class="tool-input" type="number" id="t5-y0-prod" placeholder="&mdash;" step="1">
+      <input class="tool-input" type="number" id="t5-y0-sold" placeholder="&mdash;" step="1">
+      <input class="tool-input" type="number" id="t5-y0-prof" placeholder="&mdash;" step="1">
+
+      <div class="yoy-label">Year 2</div>
+      <input class="tool-input" type="number" id="t5-y1-fc" placeholder="&mdash;" step="1">
+      <input class="tool-input" type="number" id="t5-y1-act" placeholder="&mdash;" step="1">
+      <input class="tool-input" type="number" id="t5-y1-prod" placeholder="&mdash;" step="1">
+      <input class="tool-input" type="number" id="t5-y1-sold" placeholder="&mdash;" step="1">
+      <input class="tool-input" type="number" id="t5-y1-prof" placeholder="&mdash;" step="1">
+
+      <div class="yoy-label">Year 3</div>
+      <input class="tool-input" type="number" id="t5-y2-fc" placeholder="&mdash;" step="1">
+      <input class="tool-input" type="number" id="t5-y2-act" placeholder="&mdash;" step="1">
+      <input class="tool-input" type="number" id="t5-y2-prod" placeholder="&mdash;" step="1">
+      <input class="tool-input" type="number" id="t5-y2-sold" placeholder="&mdash;" step="1">
+      <input class="tool-input" type="number" id="t5-y2-prof" placeholder="&mdash;" step="1">
+
+      <div class="yoy-label">Year 4</div>
+      <input class="tool-input" type="number" id="t5-y3-fc" placeholder="&mdash;" step="1">
+      <input class="tool-input" type="number" id="t5-y3-act" placeholder="&mdash;" step="1">
+      <input class="tool-input" type="number" id="t5-y3-prod" placeholder="&mdash;" step="1">
+      <input class="tool-input" type="number" id="t5-y3-sold" placeholder="&mdash;" step="1">
+      <input class="tool-input" type="number" id="t5-y3-prof" placeholder="&mdash;" step="1">
+    </div>
+
+    <button class="tool-btn" onclick="calcYoY()">&#9889; Analyze Performance</button>
+    <button class="tool-btn-reset" onclick="resetTool('yoy')">&#8635; Reset</button>
+
+    <div class="result-panel" id="result-yoy"></div>
+  </div>
+</div>
+
+</div><!-- /container -->
+
+<footer>
+  ESMT Berlin &middot; Operations &amp; Global Supply Chain Management &middot; Prof. Nazli Sonmez &middot; 2026<br>
+  Study guide generated from course materials (Classes 1&ndash;7)
+</footer>
+
+<button class="scroll-top" id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">&uarr;</button>
+
+</div><!-- /page-body -->
+
+<!-- External JS (loaded in dependency order) -->
+<script src="js/math.js"></script>
+<script src="js/persistence.js"></script>
+<script src="js/suppliers.js"></script>
+<script src="js/tool-design.js"></script>
+<script src="js/tool-newsvendor.js"></script>
+<script src="js/tool-supplier.js"></script>
+<script src="js/tool-tracker.js"></script>
+<script src="js/tool-yoy.js"></script>
+<script src="js/navigation.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>
