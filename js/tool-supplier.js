@@ -8,7 +8,8 @@
     var allSuppliers = GSCM.suppliers;
     var targetA=parseFloat(document.getElementById('t3-targetA').value)||0;
     var targetB=parseFloat(document.getElementById('t3-targetB').value)||0;
-    var holdCost=parseFloat(document.getElementById('t3-holding').value)||0;
+    var holdCostA=parseFloat(document.getElementById('t3-holdingA').value)||0;
+    var holdCostB=parseFloat(document.getElementById('t3-holdingB').value)||0;
 
     var checked=[];
     for(var s=0;s<allSuppliers.length;s++){
@@ -50,7 +51,7 @@
         remainA-=uA; remainB-=uB;
         totalProdCost += uA*sup.costA + uB*sup.costB;
         totalSetup += sup.setup;
-        totalHolding += holdCost*(uA+uB)*sup.lead/2;
+        totalHolding += (holdCostA*uA + holdCostB*uB)*sup.lead/2;
         totalCapA+=sup.capA; totalCapB+=sup.capB;
       });
 
