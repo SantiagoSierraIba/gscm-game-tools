@@ -83,8 +83,8 @@
       var detImpact=newProfitA+newProfitB-baseProfit;
       var nvImpact=null;
       if(nvMode){
-        var sA=isNaN(opt.sigA)?baseSigA:opt.sigA;
-        var sB=isNaN(opt.sigB)?baseSigB:opt.sigB;
+        var sA=baseSigA+(isNaN(opt.sigA)?0:opt.sigA);
+        var sB=baseSigB+(isNaN(opt.sigB)?0:opt.sigB);
         var nvProf=nvExpProfit(baseDA+opt.dA,Math.max(sA,0),baseProfA+opt.pA,coA)
                   +nvExpProfit(baseDB+opt.dB,Math.max(sB,0),baseProfB+opt.pB,coB);
         nvImpact=nvProf-baseNVProfit;
@@ -132,10 +132,10 @@
           totalDB+=filled[b].dB;
           totalPA+=filled[b].pA;
           totalPB+=filled[b].pB;
-          // Additive σ approximation: σ_combo = baseσ + Σ(optionσ_i − baseσ)
+          // Additive σ: σ_combo = baseσ + Σ(Δσ_i)
           if(nvMode){
-            if(!isNaN(filled[b].sigA)) comboSigA+=(filled[b].sigA-baseSigA);
-            if(!isNaN(filled[b].sigB)) comboSigB+=(filled[b].sigB-baseSigB);
+            if(!isNaN(filled[b].sigA)) comboSigA+=filled[b].sigA;
+            if(!isNaN(filled[b].sigB)) comboSigB+=filled[b].sigB;
           }
           count++;
         }
