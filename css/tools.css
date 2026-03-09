@@ -281,3 +281,15 @@
     .supplier-card .supplier-fields { flex-direction: column; gap: 0.5rem; }
     .supplier-card .supplier-field { min-width: 100%; }
   }
+
+  /* ─── YoY Action Buttons (edit/delete) ─── */
+  .yoy-action-btn {
+    background: transparent; border: 1px solid var(--border); border-radius: 6px;
+    cursor: pointer; font-size: 0.85rem; padding: 0.2rem 0.5rem;
+    font-family: inherit; transition: color 0.2s, border-color 0.2s;
+    margin-left: 0.25rem; line-height: 1;
+  }
+  .yoy-edit-btn { color: var(--text-dim); }
+  .yoy-edit-btn:hover { color: var(--accent); border-color: var(--accent); }
+  .yoy-delete-btn { color: var(--text-dim); }
+  .yoy-delete-btn:hover { color: var(--red); border-color: var(--red); }

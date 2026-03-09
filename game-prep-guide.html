@@ -1320,48 +1320,23 @@ Close supplier: up to 25-40k/month reserve &rarr; deployed when you see actual d
   <div class="tool-card">
     <h3>&#128203; Year-over-Year Performance Tracker</h3>
     <p style="color:var(--text-dim);font-size:0.88rem;margin-bottom:1rem;">
-      Track performance across game years to detect forecast bias and profit trends. Fill in data after each simulated year.
+      Save data after each game year to build a persistent history. Edit or delete past years anytime, then analyze for bias and trends.
     </p>
 
-    <div class="yoy-grid">
-      <div class="yoy-label"></div>
-      <div class="yoy-header">Forecast Demand</div>
-      <div class="yoy-header">Actual Demand</div>
-      <div class="yoy-header">Units Produced</div>
-      <div class="yoy-header">Units Sold</div>
-      <div class="yoy-header">Profit ($k)</div>
-
-      <div class="yoy-label">Year 1</div>
-      <input class="tool-input" type="number" id="t5-y0-fc" placeholder="&mdash;" step="1">
-      <input class="tool-input" type="number" id="t5-y0-act" placeholder="&mdash;" step="1">
-      <input class="tool-input" type="number" id="t5-y0-prod" placeholder="&mdash;" step="1">
-      <input class="tool-input" type="number" id="t5-y0-sold" placeholder="&mdash;" step="1">
-      <input class="tool-input" type="number" id="t5-y0-prof" placeholder="&mdash;" step="1">
-
-      <div class="yoy-label">Year 2</div>
-      <input class="tool-input" type="number" id="t5-y1-fc" placeholder="&mdash;" step="1">
-      <input class="tool-input" type="number" id="t5-y1-act" placeholder="&mdash;" step="1">
-      <input class="tool-input" type="number" id="t5-y1-prod" placeholder="&mdash;" step="1">
-      <input class="tool-input" type="number" id="t5-y1-sold" placeholder="&mdash;" step="1">
-      <input class="tool-input" type="number" id="t5-y1-prof" placeholder="&mdash;" step="1">
-
-      <div class="yoy-label">Year 3</div>
-      <input class="tool-input" type="number" id="t5-y2-fc" placeholder="&mdash;" step="1">
-      <input class="tool-input" type="number" id="t5-y2-act" placeholder="&mdash;" step="1">
-      <input class="tool-input" type="number" id="t5-y2-prod" placeholder="&mdash;" step="1">
-      <input class="tool-input" type="number" id="t5-y2-sold" placeholder="&mdash;" step="1">
-      <input class="tool-input" type="number" id="t5-y2-prof" placeholder="&mdash;" step="1">
-
-      <div class="yoy-label">Year 4</div>
-      <input class="tool-input" type="number" id="t5-y3-fc" placeholder="&mdash;" step="1">
-      <input class="tool-input" type="number" id="t5-y3-act" placeholder="&mdash;" step="1">
-      <input class="tool-input" type="number" id="t5-y3-prod" placeholder="&mdash;" step="1">
-      <input class="tool-input" type="number" id="t5-y3-sold" placeholder="&mdash;" step="1">
-      <input class="tool-input" type="number" id="t5-y3-prof" placeholder="&mdash;" step="1">
+    <h4 id="yoy-entry-label" style="margin-top:0;">Year 1</h4>
+    <div class="tool-input-row" style="margin-bottom:0.8rem;">
+      <div class="tool-input-group"><label class="tool-label">Forecast Demand</label><input class="tool-input" type="number" id="t5-fc" placeholder="&mdash;" step="1"></div>
+      <div class="tool-input-group"><label class="tool-label">Actual Demand</label><input class="tool-input" type="number" id="t5-act" placeholder="&mdash;" step="1"></div>
+      <div class="tool-input-group"><label class="tool-label">Units Produced</label><input class="tool-input" type="number" id="t5-prod" placeholder="&mdash;" step="1"></div>
+      <div class="tool-input-group"><label class="tool-label">Units Sold</label><input class="tool-input" type="number" id="t5-sold" placeholder="&mdash;" step="1"></div>
+      <div class="tool-input-group"><label class="tool-label">Profit ($k)</label><input class="tool-input" type="number" id="t5-prof" placeholder="&mdash;" step="1"></div>
     </div>
 
-    <button class="tool-btn" onclick="calcYoY()">&#9889; Analyze Performance</button>
-    <button class="tool-btn-reset" onclick="resetTool('yoy')">&#8635; Reset</button>
+    <button class="tool-btn" onclick="saveYoYYear()">&#128190; Save Year</button>
+    <button class="tool-btn" onclick="calcYoY()" style="background:var(--green);">&#9889; Analyze Performance</button>
+    <button class="tool-btn-reset" onclick="resetYoYHistory()">&#8635; Reset All</button>
+
+    <div id="yoy-history-container" style="margin-top:1.2rem;"></div>
 
     <div class="result-panel" id="result-yoy"></div>
   </div>
